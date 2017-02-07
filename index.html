@@ -1,36 +1,133 @@
-
-<!DOCTYPE HTML>
-
-
-<html>
-
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>What's Popping?</title>	
-</head>
 
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script type="text/javascript">
+      window.addEventListener("load", function() {
+        var c, a = document.getElementById("drawingspace");
+        a.width = window.innerWidth;
+        a.height = window.innerHeight;
+        var e = !1;
+        c = a.getContext("2d");
+        a.addEventListener("mousemove", function(b) {
+          var a, d;
+          if (b.layerX || 0 == b.layerX) a = b.layerX, d = b.layerY;
+          else if (b.offsetX || 0 == b.offsetX) a = b.offsetX, d = b.offsetY;
+          c.lineCap = "full";
+          c.lineWidth = 2;
+          c.strokeStyle = "red";
+          e ? (c.lineTo(a, d), c.stroke()) : (c.beginPath(), c.moveTo(a, d), e = !0)
+        }, !1)
+        a.addEventListener("", function(b) {
+          c.clearRect(0,0,a.width, a.height);
+          c.beginPath();
+        }, !1)
+      }, !1);
+      var stateCount = 0;
+      (function(window,undefined){
+          });
+  </script>
 
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Dict2.6</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
 
- 
- 
- 
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<!--   <link rel="stylesheet" href="css/normalize.css">
+ -->  <link rel="stylesheet" href="css/skeleton.css">
+ lin
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
 <body>
-<h1>Hello Web Design Class</h1>
-<p> Hey, this is my first website!</p>
 
-<img src= "https://placekitten.com/200/300" alt="">
 
-<h2> Favorite Internet Things</h2>
-<h3>foc.us and Commericaltype.com  </h3>
 
-<h2> Process Posts  </h2>
+
+
+<a href="index.html">
+  <img class="header" src="images/mastheadblack_resized.png">
+  </a>
+
+
+  <div class="container">
+
+<!--   <canvas id="drawingspace" class="drawing" overflow-y="scroll" ></canvas>
+ -->
+
+    <div class="content" style="z-index: 9999999">
+
+
+
+        <a href="skeuomorphism.html">
+        <h1>1. skeuomorphism <span style="font-family: 'Blake Grotesk_Regular',Helvetica; ">ISSN 977-062067014</h1>
+        </a>
+
+        <a href="punch.html">
+        <h1>2. punch-cutter <span style="font-family: 'Blake Grotesk_Regular',Helvetica; ">ISBN 0-907259-06-5</h1>
+        </a>
+
+        <a href="noordzji.html">
+        <h1>3. noordzij <span style="font-family: 'Blake Grotesk_Regular',Helvetica; ">ISBN 978-9490913397</h1>
+        </a>
+
+          <a href="enschede.html">
+        <h1>4. enschedé  <span style="font-family: 'Blake Grotesk_Regular',Helvetica; ">ISBN 907-0386534</h1>
+        </a>
+  
+          <a href="haag.html">
+        <h1>5. den haag  <span style="font-family: 'Blake Grotesk_Regular',Helvetica; ">ISBN 906-70-41-858</h1>
+        </a>
+
+          <a href="goblet.html">
+        <h1>6. crystal goblet  <span style="font-family: 'Blake Grotesk_Regular',Helvetica; ">ISBN 978-3037781692</h1>
+        </a>
+
+        <a href="johannes.html">
+        <h1>7. johannes  <span style="font-family: 'Blake Grotesk_Regular',Helvetica; ">ISBN 978-0756509897</h1>
+        </a>
+        
+        <a href="hinting.html">
+        <h1>8. hinting  <span style="font-family: 'Blake Grotesk_Regular',Helvetica; ">ISBN 978-0596102425</h1>
+        </a>
+
+        <a href="caslon.html">
+        <h1>9. caslon  <span style="font-family: 'Blake Grotesk_Regular',Helvetica; ">ISBN 0-900093-13-7</h1>
+        </a>
+
+        <a href="grotesque.html">
+        <h1>10. grotesque  <span style="font-family: 'Blake Grotesk_Regular',Helvetica; ">ISBN 978-0953520107</h1>
+        </a>
+
+
+
+    </div>
+
+<div class="description">
+ <a href="des.html"> &#183;</a>
+</div>
+
+</div>
+  </div>
+
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
-
-
-
-
-
-
-
-
 </html>
