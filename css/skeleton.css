@@ -120,84 +120,44 @@ are based on 10px sizing. So basically 1.5rem = 15px :) */
 html {
   font-size: 62.5%; }
 body {
+  font-family: 'Garnett Typewriter Regular';
   background-color: black;
 }
 
- .header{
-  top: 0;
-  left: 0;
-  display: block;
-    position: fixed;
-    z-index: 99999999;
-    width: 100%;
 
- }
-
-.description{
-  text-align: center;
-}
-
- .outline{display: none;}
-
- .illus {
-  position: fixed;
-  z-index: 99999;
-  width: 98%;
- }
-
-.print{
-  display: none;
-}
-
+ 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+
+
+
+
 @font-face {
-    font-family: 'Blake Typewriter_Regular';
-    src:    url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.eot');
-    src:    url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.woff') format('woff'),
-            url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.woff2') format('woff2'),
-            url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.ttf') format('truetype'),
-            url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.svg#svgFontName') format('svg');
-    font-weight: normal;
+     font-family: 'Garnett Typewriter Regular';
+    src: url('/fonts/garnetttypewriter-regular-webfont.woff2') format('woff2'),
+         url('/fonts/garnetttypewriter-regular-webfont.woff') format('woff'),
+         url('/fonts/GarnettTypewriter-Regular.otf') format('otf');
     font-style: normal;
-}
-
-@font-face {
-    font-family: 'Blake Grotesk_Regular';
-    src:    url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.eot');
-    src:    url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.woff') format('woff'),
-            url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.woff2') format('woff2'),
-            url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.ttf') format('truetype'),
-            url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.svg#svgFontName') format('svg');
     font-weight: normal;
-    font-style: normal;
-}
+      -webkit-font-smoothing: antialiased;
 
-@font-face {
-    font-family: 'Piegnot_Beta 1.1';
-    src:    url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.eot');
-    src:    url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.woff') format('woff'),
-            url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.woff2') format('woff2'),
-            url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.ttf') format('truetype'),
-            url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.svg#svgFontName') format('svg');
 
 }
 
+
 @font-face {
-    font-family: 'Blake Grotesk_C1';
-    src:    url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.eot');
-    src:    url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.woff') format('woff'),
-            url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.woff2') format('woff2'),
-            url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.ttf') format('truetype'),
-            url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.svg#svgFontName') format('svg');
+    font-family: 'Garnett Typewriter Italic';
+    src: url('/fonts/garnetttypewriter-regularitalic-webfont.woff2') format('woff2'),
+         url('/fonts/garnetttypewriter-regularitalic-webfont.woff') format('woff'),
+         url('/fonts/GarnettTypewriter-RegularItalic.otf') format('otf');
+    font-style: italic;
     font-weight: normal;
-    font-style: normal;
-}
+      -webkit-font-smoothing: antialiased;
 
+
+}
 
 
 /*h1, h2, h3, h4, h5, h6 {
@@ -221,94 +181,45 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0;}*/
   h6 { font-size: 1.5rem; }
 }
 */
-p {
-  margin-top: 0;
-  font-family: 'Blake Typewriter_Regular' }
+
 
 h1 {
-  border-bottom: 1px white solid;
-  padding-bottom: 30px;
-  font-family: 'Piegnot_Beta 1.1';
-  font-size:3.8vw;
- font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-}
-
-.title {
-
-display: block;
-padding-top: 100px;
-}
-
-h2 {
-  font-family: 'Blake Grotesk_C1';
+  padding-bottom: 11px;
+  padding-left: 15px;
+  font-family: 'Garnett Typewriter Regular';
+  font-size:14px;
+  line-height: 27px;
   color: white;
-  font-size:9.4vw;
-   font-weight: normal;
-  text-transform: uppercase;
-  -webkit-font-smoothing: antialiased;
-      text-align: center;
-  -webkit-transform:scale(1,2); /* Safari and Chrome */
-    -moz-transform:scale(1,2);/* Firefox */
-    -ms-transform:scale(1,2); /* IE 9 */
-    -o-transform:scale(1,2); /* Opera */
-    transform:scale(1,2);/* W3C */
+ text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: normal;
+
 
 }
 
-h3 {
-  display: none;
-}
 
-h4{
-  display: none;
-}
-
-h5{
-    font-family: 'Blake Grotesk_Regular';
-  color: white;
-  font-size:2.8vw;
-   font-weight: normal;
-  text-transform: capitalize;
-  -webkit-font-smoothing: antialiased;
-}
-
-.citations{
-  padding-top: 300px;
-}
-
-.drawing {
-  width: 100%;
-  position: absolute;
-
-}
-
-.title{
+.sticky{
 position: fixed;
-bottom: 0;
-text-align: center;  
+top:30px;
+display: block;
+
 }
 
-.content {
-color: White;
-text-transform: uppercase;
-width: 100%;
-display: inline-block;
-padding-top: 400px;
-}
-
-.definition {
-display: none;
-}
 
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-a {
+a { 
+  font-family: 'Garnett Typewriter Regular';
   color: white;
-  text-decoration: none; }
+  text-decoration: none; 
+  display: block}
 a:hover {
-  color: white; }
-
+  font-family: 'Garnett Typewriter Italic';
+  color: white; 
+  text-shadow: 0px 0px 10px white;
+  display: block;
+}
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -555,14 +466,8 @@ there.
 /* Larger than mobile */
 @media (min-width: 400px) {
 
-h1 {
-  border-bottom: 1px white solid;
-  padding-bottom: 10px;
-  font-family: 'Piegnot_Beta 1.1';
-font-size:3.8vw;
- font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-}
+
+
 
 .content {
 color: White;
@@ -611,14 +516,6 @@ display: inline-block;
 padding-top: 300px;
 }
 
-h1 {
-  border-bottom: 1px white solid;
-  padding-bottom: 20px;
-  font-family: 'Piegnot_Beta 1.1';
-font-size:3.8vw;
- font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-}
 
 }
 
@@ -651,14 +548,6 @@ display: inline-block;
 padding-top: 400px;
 }
 
-h1 {
-  border-bottom: 1px white solid;
-  padding-bottom: 20px;
-  font-family: 'Piegnot_Beta 1.1';
-font-size:3.8vw;
- font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-}
 
 }
 
@@ -673,104 +562,7 @@ font-size:3.8vw;
 }
 
 
-@font-face {
-    font-family: 'Blake Typewriter_Regular';
-    src:    url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.eot');
-    src:    url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.woff') format('woff'),
-            url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.woff2') format('woff2'),
-            url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.ttf') format('truetype'),
-            url('../fonts/BlakeTypewriter/Regular/Blake_Typewriter-Regular_web.svg#svgFontName') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
-@font-face {
-    font-family: 'Blake Grotesk_Regular';
-    src:    url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.eot');
-    src:    url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.woff') format('woff'),
-            url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.woff2') format('woff2'),
-            url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.ttf') format('truetype'),
-            url('../fonts/BlakeGrotesk/Regular/Blake_Grotesk-Regular_web.svg#svgFontName') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Piegnot_Beta 1.1';
-    src:    url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.eot');
-    src:    url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.woff') format('woff'),
-            url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.woff2') format('woff2'),
-            url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.ttf') format('truetype'),
-            url('../fonts/Piegnot/Beta1.1/Piegnot-Beta_1.1_web.svg#svgFontName') format('svg');
-
-}
-
-@font-face {
-    font-family: 'Blake Grotesk_C1';
-    src:    url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.eot');
-    src:    url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.woff') format('woff'),
-            url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.woff2') format('woff2'),
-            url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.ttf') format('truetype'),
-            url('../fonts/BlakeGrotesk/C1/Blake_Grotesk-C1_web.svg#svgFontName') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-.header {
-  display: none;
-}
-
-.citations {
-  display: none;
-}
-
-h1{
-    font-family: 'Blake Grotesk_C1';
-  color: red;
-  font-size:9.4vw;
-   font-weight: normal;
-  text-transform: uppercase;
-  -webkit-font-smoothing: antialiased;
-      text-align: center;
-  -webkit-transform:scale(1,2); /* Safari and Chrome */
-    -moz-transform:scale(1,2);/* Firefox */
-    -ms-transform:scale(1,2); /* IE 9 */
-    -o-transform:scale(1,2); /* Opera */
-    transform:scale(1,2);/* W3C */
-}
-
-h2 {
-  font-family: 'Blake Grotesk_Regular';
-  color: red;
-  font-size:3.1vw;
-   font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-      text-align: left;}
-
-.outline {
-  display: inline;
-  position: fixed;
-  z-index: -999999999;
-  padding-top: 45%;
-  width: 98%;
-}
-
-.definition {
-  font-family: 'Blake Typewriter_Regular';
-  font-size: 20px;
-   font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-}
-
-.web {
-  display: none;
-}
-
-}
 
 
 
