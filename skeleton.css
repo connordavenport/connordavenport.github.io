@@ -118,10 +118,16 @@
 html is set to 62.5% so that all the REM measurements throughout Skeleton
 are based on 10px sizing. So basically 1.5rem = 15px :) */
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%; 
+  min-height: 100%;
+}
 body {
   font-family: 'Garnett Typewriter Regular';
-  background-color: black;
+  background-image: url("../images/Interpo_splashpage.gif");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100%;
 }
 
 
