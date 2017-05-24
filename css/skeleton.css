@@ -214,7 +214,7 @@ display: block;
 
 .bottom{
   position: fixed;
-  bottom: 0px;
+  bottom: 1px;
   display: block;
 }
 
