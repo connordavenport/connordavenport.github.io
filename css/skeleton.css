@@ -136,36 +136,6 @@ body {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 
-
-
-
-
-@font-face {
-     font-family: 'Garnett Typewriter Regular';
-    src: url('/fonts/garnetttypewriter-regular-webfont.woff2') format('woff2'),
-         url('/fonts/garnetttypewriter-regular-webfont.woff') format('woff'),
-         url('/fonts/GarnettTypewriter-Regular.otf') format('otf');
-    font-style: normal;
-    font-weight: normal;
-      -webkit-font-smoothing: antialiased;
-
-
-}
-
-
-@font-face {
-    font-family: 'Garnett Typewriter Italic';
-    src: url('/fonts/garnetttypewriter-regularitalic-webfont.woff2') format('woff2'),
-         url('/fonts/garnetttypewriter-regularitalic-webfont.woff') format('woff'),
-         url('/fonts/GarnettTypewriter-RegularItalic.otf') format('otf');
-    font-style: italic;
-    font-weight: normal;
-      -webkit-font-smoothing: antialiased;
-
-
-}
-
-
 /*h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 2rem;
@@ -188,11 +158,10 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0;}*/
 }
 */
 
-
+* {font-family: -apple-system, BlinkMacSystemFont, sans-serif;}
 h1 {
   padding-bottom: 11px;
   padding-left: 15px;
-  font-family: 'Garnett Typewriter Regular';
   font-size:14px;
   line-height: 27px;
   color: white;
@@ -206,7 +175,6 @@ h1 {
 
 
 .sticky{
-font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 position: fixed;
 top:30px;
 display: block;
@@ -222,13 +190,11 @@ display: block;
 
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-a { 
-  font-family: 'Garnett Typewriter Regular';
+a {
   color: white;
   text-decoration: none; 
   display: block}
 a:hover {
-  font-family: 'Garnett Typewriter Regular';
   color: white; 
   text-shadow: 0px 0px 20px white;
   display: block;
