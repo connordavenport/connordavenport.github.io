@@ -206,6 +206,7 @@ h1 {
 
 
 .sticky{
+font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 position: fixed;
 top:30px;
 display: block;
