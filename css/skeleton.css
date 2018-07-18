@@ -157,13 +157,13 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0;}*/
 }
 */
 
-* {font-family: -apple-system, BlinkMacSystemFont, sans-serif;}
 h1 {
   padding-bottom: 11px;
   padding-left: 15px;
-  font-size:14px;
+  font-size:19px;
   line-height: 27px;
   color: white;
+  font-weight: Normal:
  text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
