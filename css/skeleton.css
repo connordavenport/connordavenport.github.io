@@ -167,14 +167,12 @@ h1 {
   padding-left: 15px;
   font-size:19px;
   line-height: 27px;
-  color: #FFFFFF;
-  font-weight: Normal:
- text-rendering: optimizeLegibility;
+  color: white;
+  font-weight: Normal;
+  text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: normal;
-
-
 }
 
 
