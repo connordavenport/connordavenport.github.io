@@ -168,11 +168,6 @@ h1 {
   font-size:19px;
   line-height: 27px;
   color: white;
-  font-weight: Normal;
-  text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-weight: normal;
 }
 
 
