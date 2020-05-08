@@ -33,55 +33,112 @@
 
 @font-face {
   font-family: Beaujon;
-  src: url('fonts/Beaujon-Regular.woff') format('woff');
+  src: url('fonts/Beaujon-VF.woff2') format('woff2');
+  font-weight: 1 999;
+
 }
 
 @font-face {
-  font-family: Permanent;
-  src: url('fonts/Permanent-Regular.woff') format('woff');
+  font-family: Temporary;
+  src: url('fonts/Temporary-VF.woff2') format('woff2');
+  font-weight: 1 999;
+}
+
+@font-face {
+  font-family: BeveledLogo;
+  src: url('fonts/Logo.woff2') format('woff2');
 }
 
 body {
-  background-color: #fc7f03;
+  background: #fc7b03 ;
+  background-size: 100% 100%;
   color: white;
+  overflow: hidden;
+
+}
+
+.center {
+    padding: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) ;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.logo {
+  font-size: 500px;
+  font-family: 'BeveledLogo';
+  text-shadow: 0px 0px 30px white;
+
+  font-variation-settings: 'wght' 0, 'wdth' 1000;
+  animation: logoAnimation 4000ms infinite forwards;
+}
+
+@keyframes logoAnimation {
+    60% {
+        font-variation-settings: 'wght' 1000, 'wdth' 1000;
+    }
+    
+    100% {
+        font-variation-settings: 'wght' 0, 'wdth' 1000;
+    }
+}
+
+
+html {
+  height: 100%;
 }
 
 h1 {
   font-family: 'Beaujon';
+  font-weight: 700;
+  font-size:40px;
+
   padding-bottom: 11px;
   padding-left: 15px;
-  font-size:40px;
-  font-weight: normal;
+  
 }
 
 a {
-  font-family: 'Permanent';
+  font-family: 'Temporary';
+  font-weight: 500;
+  transition: font-weight .08s ease-out;
   font-size:38px;
+  line-height: 38px;
+
   color: white;
   text-decoration: none; 
-  display: block
+  display: block;
 }
 
 a:hover {
-  color: white; 
-  text-shadow: 0px 0px 20px white;
-  display: block;
+  font-family: 'Temporary';
+  font-weight: 700;
 }
 
 
 </style>
 
 <body>
-<div class="container">
+<div id="container">
 
+<div id="background" class="center logo">
+  A
+</div>
 
 <div class="sticky">
 <h1>Connor Davenport<br>
 Typeface Designer & Font Developer<br>
 <a href="mailto:info@connordavenport.com?Subject=Hey%20There!">info@connordavenport.com</a>
 <br>
-Process Blog: <a href="http://connordavenport.tumblr.com/" target="_blank">connordavenport.tumblr.com</a>
-GitHub:<a href="https://github.com/connordavenport" target="_blank">github.com/connordavenport</a>
+<a href="http://connordavenport.tumblr.com/" target="_blank">Process Blog↗</a>
+<a href="https://github.com/connordavenport" target="_blank">GitHub↗</a>
+<a href="https://twitter.com/connordavenpo" target="_blank">Twitter↗</a>
+<a href="https://www.instagram.com/arthur.fontzarelli/" target="_blank">Instagram↗</a>
+
 </h1>
 
 </div>
