@@ -79,13 +79,14 @@ body {
 
 .center {
     padding: 1em;
-    position: absolute;
+    position:fixed;
     top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%) ;
     overflow: hidden;
     z-index: -1;
+
 }
 
 .logo {
@@ -96,6 +97,10 @@ body {
 
   font-variation-settings: 'wght' 0, 'wdth' 1000;
   animation: logoAnimation 4000ms infinite forwards;
+}
+
+.blend {
+  mix-blend-mode: exclusion;
 }
 
 @keyframes logoAnimation {
@@ -198,6 +203,8 @@ Typeface Designer & Font Developer<br><br>
 
 </div>
 
+
+<div class="blend center"><img src="images/logo-small.png"></div>
 
 <footer>
   <p>All of the typefaces [shown on this site] were drawn in RoboFont (Temporary & <span style="font-family: Beaujon; font-size: 18px font-weight: 'wght' 400;">Beaujon</span>)<br> My fonts would not be possible without libraries such as:<br><a href="https://github.com/fonttools/fonttools" target="_blank">FontTools,</a> <a href="https://github.com/robotools/vanilla" target="_blank">Vanilla,</a> <a href="https://robofont.com/documentation/building-tools/toolspace/mojo/" target="_blank">Mojo,</a> <a href="https://github.com/LettError/MutatorMath" target="_blank">MutatorMath,</a> <a href="https://github.com/robotools/defcon" target="_blank">Defcon,</a> <a href="https://github.com/adobe-type-tools/afdko" target="_blank">AFDKO,</a> <a href="https://github.com/robotools/fontParts" target="_blank">FontParts,</a> as well as many others.<br></p>
