@@ -31,12 +31,6 @@
 
 <style>
 
-@font-face {
-  font-family: Beaujon;
-  src: url('fonts/Beaujon-VF.woff2') format('woff2');
-  font-weight: 1 999;
-
-}
 
 @font-face {
   font-family: Temporary;
@@ -45,13 +39,13 @@
 }
 
 @font-face {
-  font-family: BeveledLogo;
-  src: url('fonts/Logo.woff2') format('woff2');
+  font-family: Subpixel;
+  src: url('fonts/Subpixel-VF.ttf') format('truetype');
 }
 
 body {
 
-  background-image: url('images/test.gif');
+  background-image: url('images/star.png');
   background-size: cover;
 
 
@@ -63,9 +57,9 @@ body {
 
   /*background: #0018FF;*/
   /*background-size: 100% 100%;*/
-  color: #FFF600;
+  /*color: #FFF600;*/
   /*overflow: hidden;*/
-  letter-spacing: .2px;
+  /*letter-spacing: .2px;*/
 
 }
 
@@ -90,7 +84,7 @@ body {
 }
 
 .logo {
-  color: #FFF600;
+  /*color: #FFF600;*/
   font-size: 500px;
   font-family: 'BeveledLogo';
   /*text-shadow: 0px 0px 30px #B0B0B0;*/
@@ -98,6 +92,7 @@ body {
   font-variation-settings: 'wght' 0, 'wdth' 1000;
   animation: logoAnimation 4000ms infinite forwards;
 }
+
 
 .blend {
   mix-blend-mode: exclusion;
@@ -123,23 +118,22 @@ footer {
     height:30px;
     width:100%;
 
-    text-shadow:
-    0px 0px 1px #4C4C4C;
 }
 
 footer a:link {
-  font-family: 'Beaujon';
+  font-family: 'Temporary';
   font-weight: 400;
   transition: font-weight .08s ease-out;
   font-size:18px;
 
-  color: #FFF600;
+  color: Black;
   text-decoration: none; 
 }
 
 footer a:hover {
-  font-family: 'Beaujon';
+  font-family: 'Temporary';
   font-weight: 800;
+  text-decoration: none; 
 }
 
 html {
@@ -147,31 +141,31 @@ html {
 }
 
 h1 {
-  font-family: 'Temporary';
+  font-family: 'Subpixel';
   font-weight: 700;
-  font-size:26px;
-  line-height: 31px;
+  font-variation-settings: "opsz" 12;
+  font-size:72px;
+  line-height: 80px;
 
   padding-bottom: 11px;
   padding-left: 15px;
 
-  text-shadow:
-    0px 0px 2px #4C4C4C;
+/*  text-shadow:
+    0px 0px 2px #4C4C4C;*/
 }
 
 a {
-  font-family: 'Beaujon';
+  font-family: 'Subpixel';
   font-weight: 700;
-  transition: font-weight .08s ease-out;
-  font-size:29px;
+  transition: .2s ease-out;
 
-  color: #FFF600;
+  /*color*/: #FFF600;
   text-decoration: none; 
 }
 
 a:hover {
-  font-family: 'Beaujon';
-  font-weight: 200;
+  font-family: 'Subpixel';
+  font-variation-settings: "opsz" 24;
 }
 
 
@@ -204,10 +198,10 @@ Typeface Designer & Font Developer<br><br>
 </div>
 
 
-<div class="blend center"><img src="images/logo-small.png"></div>
+<!-- <div class="blend center"><img src="images/logo-small.png"></div> -->
 
 <footer>
-  <p>All of the typefaces [shown on this site] were drawn in RoboFont (Temporary & <span style="font-family: Beaujon; font-size: 18px font-weight: 'wght' 400;">Beaujon</span>)<br> My fonts would not be possible without libraries such as:<br><a href="https://github.com/fonttools/fonttools" target="_blank">FontTools,</a> <a href="https://github.com/robotools/vanilla" target="_blank">Vanilla,</a> <a href="https://robofont.com/documentation/building-tools/toolspace/mojo/" target="_blank">Mojo,</a> <a href="https://github.com/LettError/MutatorMath" target="_blank">MutatorMath,</a> <a href="https://github.com/robotools/defcon" target="_blank">Defcon,</a> <a href="https://github.com/adobe-type-tools/afdko" target="_blank">AFDKO,</a> <a href="https://github.com/robotools/fontParts" target="_blank">FontParts,</a> as well as many others.<br></p>
+  <p>All of the typefaces [shown on this site] were drawn in RoboFont. The font above is an experimental Variable COLRv0 Font, built using FreeType-PY.<br> My fonts would not be possible without libraries such as:<br><a href="https://github.com/fonttools/fonttools" target="_blank">FontTools,</a> <a href="https://github.com/robotools/vanilla" target="_blank">Vanilla,</a> <a href="https://robofont.com/documentation/building-tools/toolspace/mojo/" target="_blank">Mojo,</a> <a href="https://github.com/LettError/MutatorMath" target="_blank">MutatorMath,</a> <a href="https://github.com/robotools/defcon" target="_blank">Defcon,</a> <a href="https://github.com/adobe-type-tools/afdko" target="_blank">AFDKO,</a> <a href="https://github.com/robotools/fontParts" target="_blank">FontParts,</a> as well as many others.<br></p>
 </footer>
 
 </div>
