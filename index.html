@@ -6,6 +6,53 @@
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/jquery-ui.js"></script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+  
+  // All Copy to clipboard code is from Eric Clark on CodePen //
+  // https://codepen.io/eclarrrk/pen/ZZywZv //
+
+  // Add class to mailto link
+  // Needed to separate the disabling of the default action AND copy email to clipboard
+  $('a[href^=mailto]').addClass('mailto-link');
+
+  var mailto = $('.mailto-link');
+  var messageCopy = 'Click to copy email address';
+  var messageSuccess = 'Email address copied to clipboard';
+  
+  mailto.append('<span class="mailto-message"></span>');
+  $('.mailto-message').append(messageCopy);
+  
+  // Disable opening your email client. yuk.
+  $('a[href^=mailto]').click(function() {
+    return false; 
+  })
+  
+  // On click, get href and remove 'mailto:' from value
+  // Store email address in a variable.
+  mailto.click(function() {
+    var href = $(this).attr('href');
+    var email = href.replace('mailto:', '');
+    copyToClipboard(email);
+    $('.mailto-message').empty().append(messageSuccess);
+    setTimeout(function() {
+      $('.mailto-message').empty().append(messageCopy);}, 2000); 
+  });
+  
+});
+
+// Grabbed this from Stack Overflow.
+// Copies the email variable to clipboard
+function copyToClipboard(text) {
+    var dummy = document.createElement("input");
+    document.body.appendChild(dummy);
+    dummy.setAttribute('value', text);
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
+}  
+</script>
+
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
@@ -97,6 +144,57 @@ body {
 .blend {
   mix-blend-mode: exclusion;
 }
+
+/*All Copy to clipboard code is from Eric Clark on CodePen*/
+/*https://codepen.io/eclarrrk/pen/ZZywZv*/
+
+.mailto-link {
+  position: relative;
+  padding: 8px 0;
+}
+.mailto-message {
+  font-family: 'Temporary';
+  letter-spacing: 0;
+  top: 1px;
+  left: 50%;
+  margin-bottom: -5px;
+  transform: translate(-50%, -90%);
+  position: absolute;
+  display: none;
+  width: auto;
+  white-space: nowrap;
+  font-size: 18px;
+  background-color: #d9ffd4;
+  color: #18cc00;
+  padding: 2px 10px;
+  border-color: red;
+  border-width: 7px;
+  border-radius: 20px;
+  &:after,
+  &:before {
+    content: '';
+  }
+  &:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-top-color: #d9ffd4;
+    border-width: 10px;
+    margin-left: -10px;
+  }
+}
+.mailto-link:hover .mailto-message,
+.mailto-link:focus .mailto-message,
+.mailto-link:focus-within .mailto-message {
+  display: block;
+}
+
+
+
 
 @keyframes logoAnimation {
     60% {
@@ -193,7 +291,7 @@ Typeface Designer & Font Developer<br><br>
 </h1> -->
 
 
-<h1>Connor Davenport is a typeface designer & writer of code for font development, currently based in Brooklyn, NY. To see his work check out <a href="https://github.com/connordavenport" target="_blank">GitHub</a>, <a href="https://twitter.com/connordavenpo" target="_blank">Twitter</a>, <a href="https://www.instagram.com/arthur.fontzarelli/" target="_blank">Instagram</a>, or <a href="http://connordavenport.tumblr.com/" target="_blank">Process Blog</a>. <br>Please <a href="mailto:info@connordavenport.com?Subject=Hey%20There!">reach out</a> if you have any questions. 
+<h1>Connor Davenport is a typeface designer & writer of code for font development, currently based in Brooklyn, NY. To see his work check out <a href="https://github.com/connordavenport" target="_blank">GitHub</a>, <a href="https://twitter.com/connordavenpo" target="_blank">Twitter</a>, <a href="https://www.instagram.com/arthur.fontzarelli/" target="_blank">Instagram</a>, or <a href="http://connordavenport.tumblr.com/" target="_blank">Process Blog</a>. <br>Please <a href="mailto:info@connordavenport.com">reach out</a> if you have any questions. 
 </h1> 
 
 
