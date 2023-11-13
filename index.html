@@ -81,19 +81,21 @@ function copyToClipboard(text) {
 
 @font-face {
   font-family: Temporary;
-  src: url('fonts/Temporary-VF.woff2') format('woff2');
+  src: url('fonts/Temporary.woff2') format('woff2');
   font-weight: 1 999;
 }
 
 @font-face {
   font-family: Püterschein;
-  src: url('fonts/Püterschein-Regular.otf') format('opentype');
+  src: url('fonts/Püterschein.woff2') format('woff2');
 }
 
 body {
 
   background-image: url('images/star.png');
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
 
 
 
@@ -166,9 +168,8 @@ body {
   font-size: 18px;
   background-color: #d9ffd4;
   color: #18cc00;
+  text-shadow: none;
   padding: 2px 10px;
-  border-color: red;
-  border-width: 7px;
   border-radius: 20px;
   &:after,
   &:before {
@@ -222,7 +223,6 @@ footer a:link {
   font-family: 'Temporary';
   font-weight: 400;
   transition: font-weight .08s ease-out;
-  font-size:18px;
 
   color: Black;
   text-decoration: none; 
@@ -233,6 +233,7 @@ footer a:hover {
   font-weight: 800;
   text-decoration: none; 
   letter-spacing: 0px;
+  text-shadow: none;
 }
 
 html {
@@ -241,74 +242,45 @@ html {
 
 h1 {
   font-family: 'Püterschein';
-  /*font-weight: 700;*/
-  /*font-variation-settings: "opsz" 12;*/
   font-size:20px;
   line-height: 26px;
-
   padding-bottom: 11px;
   padding-left: 15px;
 
-/*  text-shadow:
-    0px 0px 2px #4C4C4C;*/
 }
 
 a {
-  font-family: 'Püterschein';
-/*  font-weight: 700;
-  transition: .2s ease-out;
-*/
-  color: black;
-  text-decoration: none; 
+    text-shadow: 0;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    color: black;
+    text-decoration: none; 
 }
 
-/*a:hover {
-  font-family: 'Subpixel';
-  font-variation-settings: "opsz" 24;
-  letter-spacing: -3px;
+a:hover {
+   color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
-*/
+
 
 </style>
 
 <body>
 <div id="container">
 
-<!-- <div id="background" class="center logo">
-  B
-</div> -->
 
 <div class="sticky">
-<!-- <h1>Connor Davenport<br>
-Typeface Designer & Font Developer<br><br>
-<a href="mailto:info@connordavenport.com?Subject=Hey%20There!">info@connordavenport.com</a>
-<b 
-<a href="http://connordavenport.tumblr.com/" target="_blank">Process Blog</a>
-<a href="https://github.com/connordavenport" target="_blank">GitHub</a>
-<a href="https://twitter.com/connordavenpo" target="_blank">Twitter</a>
-<a href="https://www.instagram.com/arthur.fontzarelli/" target="_blank">Instagram</a>
 
-</h1> -->
-
-
-<h1>Connor Davenport is a typeface designer and writer of code for font development, currently based in Brooklyn, NY. To see his work check out <a href="https://github.com/connordavenport" target="_blank">GitHub</a>, <a href="https://twitter.com/connordavenpo" target="_blank">Twitter</a>, <a href="https://www.instagram.com/arthur.fontzarelli/" target="_blank">Instagram</a>, or <a href="http://connordavenport.tumblr.com/" target="_blank">Process Blog</a>. <br>Please <a href="mailto:info@connordavenport.com">reach out</a> if you have any questions. 
+<h1>Connor Davenport is a typeface designer and writer of code for font development, currently based in Brooklyn, NY. To see his work check out <a href="https://github.com/connordavenport" target="_blank">GitHub</a>, <a href="https://typo.social/@arthurfontzarelli" target="_blank">Mastodon</a>, <a href="https://www.instagram.com/arthur.fontzarelli/" target="_blank">Instagram</a>, or <a href="http://connordavenport.tumblr.com/" target="_blank">Process Blog</a>. <br>Please <a href="mailto:info@connordavenport.com">reach out</a> if you have any questions. 
 </h1> 
-
-
 </div>
 
-
-<!-- <div class="blend center"><img src="images/logo-small.png"></div> -->
-
 <footer>
-  <p>All of the typefaces [shown on this site] were drawn in RoboFont. The font above is an experimental Variable COLRv0 Font, built using FreeType-PY.<br> My fonts would not be possible without libraries such as:<br><a href="https://github.com/fonttools/fonttools" target="_blank">FontTools,</a> <a href="https://github.com/robotools/vanilla" target="_blank">Vanilla,</a> <a href="https://robofont.com/documentation/building-tools/toolspace/mojo/" target="_blank">Mojo,</a> <a href="https://github.com/LettError/MutatorMath" target="_blank">MutatorMath,</a> <a href="https://github.com/robotools/defcon" target="_blank">Defcon,</a> <a href="https://github.com/adobe-type-tools/afdko" target="_blank">AFDKO,</a> <a href="https://github.com/robotools/fontParts" target="_blank">FontParts,</a> as well as many others.<br></p>
+  <p>All of the typefaces are drawn in RoboFont.<br> My fonts would not be possible without libraries such as:<br><a href="https://github.com/fonttools/fonttools" target="_blank">FontTools,</a> <a href="https://github.com/robotools/vanilla" target="_blank">Vanilla,</a> <a href="https://robofont.com/documentation/building-tools/toolspace/mojo/" target="_blank">Mojo,</a> <a href="https://github.com/LettError/MutatorMath" target="_blank">MutatorMath,</a> <a href="https://github.com/robotools/defcon" target="_blank">Defcon,</a> <a href="https://github.com/adobe-type-tools/afdko" target="_blank">AFDKO,</a> <a href="https://github.com/robotools/fontParts" target="_blank">FontParts,</a> as well as many others.<br></p>
 </footer>
 
 </div>
   </div>
 
-
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
