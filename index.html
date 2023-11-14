@@ -51,6 +51,55 @@ function copyToClipboard(text) {
     document.execCommand('copy');
     document.body.removeChild(dummy);
 }  
+
+
+
+// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable
+
+//Make the DIV element draggagle:
+dragElement(document.getElementById("terminal"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById("title-bar")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById("title-bar").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
 </script>
 
   <!-- Basic Page Needs
@@ -91,61 +140,87 @@ function copyToClipboard(text) {
 }
 
 body {
-
-  background-image: url('images/star.png');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center; 
-
-
-
-  height: /*100vh*/;
-  padding:0;
-  margin:0;
-
-
-  /*background: #0018FF;*/
-  /*background-size: 100% 100%;*/
-  /*color: #FFF600;*/
-  /*overflow: hidden;*/
-  /*letter-spacing: .2px;*/
-
+    background-color: white;
+    color: #00ff00;
+    font-family: monospace;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100vh;
 }
 
-::-moz-selection {
-  color: #66ff8f;
+#terminal {
+    margin:20px;
+    position: absolute;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.4);
+    width: 500px;
+    min-width: 200px;
+    min-height: 150px;
+    resize: both;
+    overflow: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
-::selection {
-  color: #66ff8f;
+#title-bar {
+    background-color: #333;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
 }
 
-.center {
-    padding: 1em;
-    position:fixed;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%) ;
-    overflow: hidden;
-    z-index: -1;
-
+#title {
+    color: #00ff00;
+    font-size: 16px;
+    margin: 0;
 }
 
-.logo {
-  /*color: #FFF600;*/
-  font-size: 500px;
-  font-family: 'BeveledLogo';
-  /*text-shadow: 0px 0px 30px #B0B0B0;*/
+#buttons {
+    display: flex;
+    gap: 5px;
+}
 
-  font-variation-settings: 'wght' 0, 'wdth' 1000;
-  animation: logoAnimation 4000ms infinite forwards;
+.button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#close { background-color: #ff5f56; }
+#minimize { background-color: #ffbd2e; }
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow: auto;
+}
+
+.prompt {
+    color: #00ff00;
+}
+
+.command {
+    color: #ffffff;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.output {
+    color: #ffffff;
 }
 
 
-.blend {
-  mix-blend-mode: exclusion;
-}
+
 
 /*All Copy to clipboard code is from Eric Clark on CodePen*/
 /*https://codepen.io/eclarrrk/pen/ZZywZv*/
@@ -195,66 +270,12 @@ body {
 }
 
 
-
-
-@keyframes logoAnimation {
-    60% {
-        font-variation-settings: 'wght' 1000, 'wdth' 1000;
-    }
-    
-    100% {
-        font-variation-settings: 'wght' 0, 'wdth' 1000;
-    }
-}
-
-footer {
-    font-family: 'Temporary';
-    font-size: 16px;
-    line-height: 22px;
-    position:fixed;
-    left:25px;
-    bottom:70px;
-    height:30px;
-    width:100%;
-
-}
-
-footer a:link {
-  font-family: 'Temporary';
-  font-weight: 400;
-  transition: font-weight .08s ease-out;
-
-  color: Black;
-  text-decoration: none; 
-}
-
-footer a:hover {
-  font-family: 'Temporary';
-  font-weight: 800;
-  text-decoration: none; 
-  letter-spacing: 0px;
-  text-shadow: none;
-}
-
-html {
-  height: 100%;
-}
-
-h1 {
-  font-family: 'Püterschein';
-  font-size:20px;
-  line-height: 26px;
-  padding-bottom: 11px;
-  padding-left: 15px;
-
-}
-
 a {
-    text-shadow: 0;
-    transition: all .5s;
-    -webkit-transition: all .5s;
-    color: black;
-    text-decoration: none; 
+  text-shadow: 0;
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  color: black;
+  text-decoration: none; 
 }
 
 a:hover {
@@ -266,21 +287,29 @@ a:hover {
 </style>
 
 <body>
-<div id="container">
-
-
-<div class="sticky">
-
-<h1>Connor Davenport is a typeface designer and writer of code for font development, currently based in Brooklyn, NY. To see his work check out <a href="https://github.com/connordavenport" target="_blank">GitHub</a>, <a href="https://typo.social/@arthurfontzarelli" target="_blank">Mastodon</a>, <a href="https://www.instagram.com/arthur.fontzarelli/" target="_blank">Instagram</a>, or <a href="http://connordavenport.tumblr.com/" target="_blank">Process Blog</a>. <br>Please <a href="mailto:info@connordavenport.com">reach out</a> if you have any questions. 
-</h1> 
-</div>
-
-<footer>
-  <p>All of the typefaces are drawn in RoboFont.<br> My fonts would not be possible without libraries such as:<br><a href="https://github.com/fonttools/fonttools" target="_blank">FontTools,</a> <a href="https://github.com/robotools/vanilla" target="_blank">Vanilla,</a> <a href="https://robofont.com/documentation/building-tools/toolspace/mojo/" target="_blank">Mojo,</a> <a href="https://github.com/LettError/MutatorMath" target="_blank">MutatorMath,</a> <a href="https://github.com/robotools/defcon" target="_blank">Defcon,</a> <a href="https://github.com/adobe-type-tools/afdko" target="_blank">AFDKO,</a> <a href="https://github.com/robotools/fontParts" target="_blank">FontParts,</a> as well as many others.<br></p>
-</footer>
-
-</div>
-  </div>
-
+    <div id="terminal">
+        <div id="title-bar">
+            <div id="buttons">
+                <div class="button" id="minimize"></div>
+                <div class="button" id="close"></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="prompt">connordavenport@main:~$ <span class="command">echo info</span></div>
+            <br>
+            <div class="output">Connor Davenport is a typeface designer and writer of code for font development, currently based in Brooklyn, NY. To see his work check out GitHub, Mastodon, Instagram, or Process Blog.</div>
+            <br>
+            <br>
+            <div class="output">Please reach out if you have any questions.</div>
+            <br>
+            <br>
+            <div class="prompt">connordavenport@main:~$ <span class="command">echo colophon</span></div>
+            <br>
+            <div class="output">All of the typefaces are drawn in RoboFont.
+My fonts would not be possible without libraries such as:
+FontTools, Vanilla, Mojo, MutatorMath, Defcon, AFDKO, FontParts, as well as many others.</div>
+            <!-- Add more commands as needed -->
+        </div>
+    </div>
 </body>
 </html>
