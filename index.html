@@ -1,96 +1,90 @@
 <!DOCTYPE html>
 <!-- saved from url=(0048)http://rokbenedik.com/clocks/Iskra_clock/orange/ -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-  <title>Iskra Orange</title>
+  <title>intro to python for type design</title>
+
   <style>
-  
-  body {
-  background-color: #AC44FF;
-	
-  }
+  	body {
+  		font-family: SF Mono;
+  		background: white;
+  		font-size: 14px;
+  	}
 
-	.container {
-	  display: fixed;
-	  width: 80vw;
-	  height: 80vw;
-	  max-height: 80%;
-	  max-width: 80%;
-	  background-color: #AC44FF;
-	  align-items: center;
-	  justify-content: center;
-	  position: fixed;
-	  top: 50%;
-	  left: 50%;
-	  -webkit-transform: translate(-50%,-50%);
-	  -moz-transform: translate(-50%,-50%);
-	  -ms-transform: translate(-50%,-50%);
-	  -o-transform: translate(-50%,-50%);
-	  transform: translate(-50%,-50%);
+  	h1 {
+  		font-weight: 400;
+  		font-size: 20px;
+  	}
 
-	
-	}
-	.clock {
-	  position: relative;
-	  width: auto;
-	  height: 100%;
-	
-	}
-	.clock-face {
-	  position: absolute;
-	  width: 100%;
-	  height: 100%;
-	}
-	
-  .hand {  
-	 position: absolute;
-	 left: 50%;  
-	 width: 100%;
-	 height: 100%;
-	}
+  	p {
+  		color: #9B9B9B;
+  	}
 
-	
+  	p .a {
+  		color: #1E00FF;
+  	}
+
+  	p .a :hover{
+  		color: green;
+  	}
+
+  	.week {
+  		font-weight: 750;
+  	}
+
   </style>
 </head>
 <body>
   <div class="container">
-	<div class="clock">
-	  <svg class="clock-face" viewBox="0 0 50 50">
-		</svg><img id="clock-face" class="clock-face" src="typeface.svg" alt="Clock Face">
-	  
-	  <img id="hour-hand" class="hand" src="hour.svg" alt="Hour Hand" style="transform: translateX(-50%) rotate(161.5deg);">
-	  <img id="minute-hand" class="hand" src="minute.svg" alt="Minute Hand" style="transform: translateX(-50%) rotate(138deg);">
-	  <img id="second-hand" class="hand" src="second.svg" alt="Second Hand" style="transform: translateX(-50%) rotate(48.036deg);">
-	</div>
-  </div>
+	<!-- <div style="width: 1512px; height: 982px; position: relative; background: white; overflow: hidden"> -->
+  <h1>into to python for type design</h1>
 
-	<script>
-		function rotateClockHands() {
-		  const now = new Date();
-		  const hours = now.getHours() % 12; // Convert to 12-hour format
-		  const minutes = now.getMinutes();
-		  const seconds = now.getSeconds();
-		  const milliseconds = now.getMilliseconds();
+	<a target="_blank" alt="" href="https://github.com/connordavenport/Python-Workshops">
+	<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="black" class="bi bi-github" viewBox="0 0 16 16">
+	<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+	</svg></a>
+	
+	<a target="_blank" alt="" href="https://coopertype.org/events/intro-to-python-for-type-design-6">
+	<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="black" class="bi bi-share" viewBox="0 0 16 16">
+	<path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/></svg></a>
 
-		  const hourHand = document.getElementById('hour-hand');
-		  const minuteHand = document.getElementById('minute-hand');
-		  const secondHand = document.getElementById('second-hand');
 
-		  const hourRotation = 30 * hours + 0.5 * minutes; // 30 degrees per hour, 0.5 degrees per minute
-		  const minuteRotation = 6 * minutes; // 6 degrees per minute
-		  const secondRotation = (6 / 1000) * (1000 * seconds + milliseconds); // 6 degrees per second, 1 degree per 166.6 milliseconds
+  <p style="color: #6d07d8">
+	<span style="font-weight: 700;">instructor  </span><span>connor davenport</span><br/>
+	<span style="font-weight: 700;">class info  </span><span>thursdays, 18:30-21:30</span>
+	</p>
+	
 
-		  hourHand.style.transform = `translateX(-50%) rotate(${hourRotation}deg)`;
-		  minuteHand.style.transform = `translateX(-50%) rotate(${minuteRotation}deg)`;
-		  secondHand.style.transform = `translateX(-50%) rotate(${secondRotation}deg)`;
+	<details open="true" >
+		<summary class="week" style=" color: black;">class 1</summary>
+	  <div>
+	  	<p>march 5 2026, 18:30</p>
+	  	<span><img src="icons/pencil.svg" style="width: 13px; height: 13px;"/></span> introduction, demos, basic overview<br/>
+	  	<span><img src="icons/house.svg" style="width: 13px; height: 13px;"/></span> rewrite each script and investigate how each works, changing variable and values.
+	  </div>
+	</details>
+  <br/><br/>
+  
+  <details>
+  	<br/>
+  	<p>march 12 2026, 18:30<br/>more info coming soon...</p>
+  	<summary class="week" style="color: #9B9B9B;">class 2</summary>
+  </details>
 
-		  // Call the function again after a short interval
-		  const remainingMilliseconds = 1000 - milliseconds;
-		  setTimeout(rotateClockHands, remainingMilliseconds);
-		}
+  <br/><br/>
+  <details>
+  	<br/>
+  	<p>march 19 2026, 18:30<br/>more info coming soon...</p>
+  	<summary class="week" style="color: #9B9B9B;">class 3</summary>
+  </details>
 
-		// Start the clock rotation
-		rotateClockHands();
+  <br/><br/>
+  <details>
+  	<br/>
+  	<p>march 26 2026, 18:30<br/>more info coming soon...</p>
+  	<summary class="week" style="color: #9B9B9B;">class 4</summary>
+  </details>
 
-	</script>
+  <br/>
 
+</div>
 </body></html>
