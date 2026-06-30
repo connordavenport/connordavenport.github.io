@@ -1,90 +1,1475 @@
-<!DOCTYPE html>
-<!-- saved from url=(0048)http://rokbenedik.com/clocks/Iskra_clock/orange/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-  <title>intro to python for type design</title>
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+img:not([height]) { height: auto; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-width: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignObject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
 
-  <style>
-  	body {
-  		font-family: SF Mono;
-  		background: white;
-  		font-size: 14px;
-  	}
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap' type='text/css' />
+<style type='text/css'  id="style-theme_css">/*快速自定义配置*/
+:root {
+    --monospace: "SF Mono", "Fira Code", "Cascadia Code", Menlo, "Ubuntu Mono", Consolas, HYZhengYuan; /*代码字体*/
+    --text: "SF Pro Text", "sans-serif", "system-ui"; /*代码字体*/
+    --header: "SF Pro Display", "sans-serif", "system-ui"; /*代码字体*/
+    --text-font: var(--text); /*正文字体*/
+    --title-font: var(--header); /*标题字体*/
+    --latex-font: var(--monospace); /*LaTeX字体(不含英语)*/
+    --text-line-height: 1.6; /*正文行间距*/
+    --code-line-height: 1.6; /*代码块行间距*/
+    --p-spacing: 0.8rem; /*段间距*/
+    --file-tree-text-size: 1.1rem; /*文件树大小*/
+    --toc-text-size: 1rem; /*大纲大小*/
+    --text-size: 16px; /*字体大小 推荐配置: 应用设置-外观-字体大小*/
+}/*
+ * MIT License
+ *
+ * Copyright (c) 2023 劉強東 https://github.com/liangjingkanji
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+@import url();
+@include-when-export url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-  	h1 {
-  		font-weight: 400;
-  		font-size: 20px;
-  	}
+:root {
+    --text-color: #333333;
+    --bg-color: #ffffff;
+    --control-text-color: var(--text-color);
+    --meta-content-color: var(--text-color);
+    --active-file-border-color: var(--drake-accent);
+    --rawblock-edit-panel-bd: var(--code-block-bg-color);
+    --item-hover-bg-color: #E5E5E596;
+    --active-file-bg-color: var(--item-hover-bg-color);
 
-  	p {
-  		color: #9B9B9B;
-  	}
+    --blur-text-color: rgba(51, 51, 51, 0.5);
+    --drake-accent: #e95f59;
+    --drake-highlight: #d63200;
+    --a-color: var(--drake-highlight);
+    --variable-color: var(--drake-highlight);
+    --outline-active-color: var(--a-color);
+    --code-block-bg-color: #2b2b2b;
+    --code-block-color: #A9B7C6;
+    --title-color: #273849;
+    --blockquote-border-color: var(--drake-accent);
+    --blockquote-color: var(--text-color);
+    --blockquote-bg-color: #fdefee;
+    --strong-color: var(--title-color);
+    --h2-underline-color: var(--title-color);
+    --horizontal-divider-color: var(--title-color);
+    --height-light-color: var(--drake-highlight);
+    --height-light-border-color: var(--drake-highlight);
+    --yaml-color: #777777;
+    --yaml-bg-color: #f7f7f7;
+    --footnotes-bg-color: #3c3d3e;
+    --footnotes-highlight: #FFD760;
+    --table-border-color: #dfe2e5;
+    --table-header-bg-color: #f8f8f8;
+    --table-bg-color: var(--bg-color);
+    --table-n2-bg-color: #f8f8f8;
+    --input-bg-color: var(--item-hover-bg-color);
+    --btn-hover-bg-color: var(--item-hover-bg-color);
+    --checkbox-checked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M425.984 726.016l384-384-59.99-61.995-324.01 324.011-152.021-152.021L213.973 512zm384-598.016q36.01 0 61.013 25.984T896 213.974v596.01q0 34.005-25.003 59.99t-61.013 25.983h-596.01q-36.011 0-61.014-25.984t-25.003-59.989v-596.01q0-34.006 25.003-59.99T213.973 128h596.011z' fill='%2365b73b'/%3E%3C/svg%3E");
+    --checkbox-unchecked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M810.667 213.333v597.334H213.333V213.333h597.334m0-85.333H213.333C166.4 128 128 166.4 128 213.333v597.334C128 857.6 166.4 896 213.333 896h597.334C857.6 896 896 857.6 896 810.667V213.333C896 166.4 857.6 128 810.667 128z' fill='%23333333'/%3E%3C/svg%3E");
+}
 
-  	p .a {
-  		color: #1E00FF;
-  	}
+html {
+    font-size: var(--text-size);
+}
 
-  	p .a :hover{
-  		color: green;
-  	}
+body {
+    font-family: var(--text-font) !important;
+    color: var(--text-color);
+    -webkit-font-feature-settings: "liga" on, "calt" on;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
 
-  	.week {
-  		font-weight: 750;
-  	}
+p {
+    line-height: var(--text-line-height);
+}
 
-  </style>
+/*code block*/
+.md-fences {
+    font-size: 1rem;
+    padding: 0.5rem !important;
+    border-radius: 2px;
+    word-wrap: normal;
+    background-color: var(--code-block-bg-color);
+    color: var(--code-block-color);
+    border: none;
+    line-height: var(--code-line-height);
+}
+.on-focus-mode .CodeMirror.cm-s-inner:not(.CodeMirror-focused) *,
+.on-focus-mode .md-fences.md-focus .CodeMirror-code > :not(.CodeMirror-activeline) *,
+.on-focus-mode .md-htmlblock.md-focus .CodeMirror-code > :not(.CodeMirror-activeline) * {
+    color: #909090 !important
+}
+
+/*inline latex*/
+.MathJax {
+    font-size: 120% !important;
+}
+.MathJax text, .MathJax use {
+    font-family: var(--latex-font);
+}
+/*math-block latex*/
+.md-math-block .MathJax {
+    font-size: 130% !important;
+}
+
+/*mermaid*/
+[id^=mermaidChart] .cluster rect {
+    fill: var(--table-n2-bg-color) !important;
+    stroke: var(--table-border-color) !important;
+}
+[id^=mermaidChart] .grid .tick text,
+[id^=mermaidChart] .titleText {
+    fill: var(--text-color) !important;
+}
+[id^=mermaidChart] .clusters span.nodeLabel {
+    color: var(--text-color) !important;
+    line-height: 1.8rem;
+}
+[mermaid-type="journey"] line {
+    stroke: #7a7a7a !important;
+}
+[mermaid-type="journey"] .label {
+    color: #333 !important;
+}
+[id^=mermaidChart] .relationshipLabelBox {
+    fill: var(--bg-color) !important;
+    opacity: 1 !important;
+    background-color: var(--bg-color) !important;
+}
+[id^=mermaidChart] .legend {
+    fill: var(--text-color) !important;
+}
+[id^=mermaidChart] g.label {
+    font-size: 1rem !important;
+}
+[id^=mermaidChart] line.divider {
+    stroke: var(--table-border-color) !important;
+}
+[id^=mermaidChart] span.nodeLabel {
+    color: var(--code-block-color) !important;
+    line-height: 1.8rem;
+}
+tspan {
+    color: var(--text-color)
+}
+[id^=mermaidChart] .entityLabel {
+    fill: var(--code-block-color) !important;
+}
+[id^=mermaidChart] {
+    fill: var(--text-color) !important;
+}
+[id^=mermaidChart] rect.rect {
+    fill: rgba(175, 255, 212, 0.3) !important;
+}
+.md-diagram-panel-preview text.actor > tspan { /*方块文字*/
+    fill: var(--code-block-color) !important;
+    stroke: none !important;
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+}
+.md-diagram-panel-preview .actor, .md-diagram-panel-preview .entityBox { /*方块*/
+    stroke: var(--table-border-color) !important;
+    fill: var(--code-block-bg-color) !important;
+}
+.md-diagram-panel-preview .actor-line { /*竖线*/
+    stroke: var(--text-color) !important;
+    stroke-width: 1px;
+}
+.md-diagram-panel-preview .messageLine0 { /*横线*/
+    stroke-width: 1.5;
+    stroke-dasharray: none;
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .messageLine1 { /*虚线*/
+    stroke-width: 1.5 !important;
+    stroke-dasharray: 2, 2 !important;
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .messageText { /*描述文字*/
+    fill: var(--text-color) !important;
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+}
+.md-diagram-panel-preview .activation0 { /*长方形*/
+    fill: #e6e6e6 !important;
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .labelText, .md-diagram-panel-preview .labelText > tspan { /*循环标记*/
+    fill: var(--code-block-color) !important;
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+    dominant-baseline: unset;
+    alignment-baseline: unset;
+}
+.md-diagram-panel-preview .labelBox { /*循环标记背景*/
+    stroke: var(--table-border-color) !important;
+    fill: var(--code-block-bg-color) !important;
+}
+.md-diagram-panel-preview .loopLine { /*循环标记虚线*/
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .loopText, .md-diagram-panel-preview .loopText > tspan { /*循环名称*/
+    fill: var(--text-color) !important;
+    font-size: 1rem !important;
+}
+.md-diagram-panel-preview .sequenceNumber { /*序号*/
+    fill: var(--bg-color) !important;
+}
+pre.md-fences-advanced.md-focus .md-fences-adv-panel {
+    border: none;
+}
+.md-diagram-panel-preview .edgePath .path { /*箭头*/
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .edgeLabel rect { /*条件文字背景*/
+    fill: var(--bg-color) !important;
+}
+.md-diagram-panel-preview .edgeLabel span { /*条件文字*/
+    color: var(--text-color) !important;
+    background: var(--bg-color) !important;
+}
+.md-diagram-panel-preview .node rect,
+.md-diagram-panel-preview .node circle,
+.md-diagram-panel-preview .node ellipse,
+.md-diagram-panel-preview .node polygon,
+.md-diagram-panel-preview .node path { /*形状*/
+    stroke: var(--table-border-color) !important;
+    fill: var(--code-block-bg-color) !important;
+}
+#write .md-diagram-panel .md-diagram-panel-preview div { /*形状内文字*/
+    color: var(--code-block-color);
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+}
+
+/*code snippet*/
+#write code, tt {
+    margin: 0 2px;
+    color: var(--drake-highlight);
+}
+
+/*variable*/
+var {
+    color: var(--variable-color);
+    font-weight: bold;
+}
+
+/*raw block*/
+.md-rawblock-control:not(.md-rawblock-tooltip) {
+    border-radius: 2px 0 2px 2px;
+    padding: 0.2rem !important;
+}
+.md-rawblock:hover > .md-rawblock-container {
+    background: none;
+}
+.md-rawblock-input {
+    font-size: 1rem;
+}
+.md-rawblock-tooltip-btn:hover {
+    background: none;
+}
+.md-rawblock:hover > .md-rawblock-tooltip {
+    border-radius: 2px 2px 0 0;
+    margin-bottom: 2px !important;
+}
+.md-rawblock-tooltip.md-rawblock-control {
+    border-radius: 2px 2px 0 0;
+    color: var(--code-block-color);
+}
+.md-rawblock-tooltip-name {
+    color: var(--code-block-color);
+    opacity: 1;
+}
+
+/*quote block*/
+blockquote:before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 4px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: var(--blockquote-border-color);
+    border-radius: 2px;
+}
+
+blockquote {
+    color: var(--blockquote-color);
+    border-radius: 2px;
+    padding: 10px 16px;
+    background-color: var(--blockquote-bg-color);
+    position: relative;
+    border-left: none;
+}
+
+strong {
+    color: var(--strong-color);
+    font-weight: bold;
+}
+#write blockquote strong {
+    color: var(--blockquote-color);
+}
+
+/*link*/
+#write a {
+    color: var(--a-color);
+    text-decoration: none;
+}
+#write h2 a .md-plain {
+    border-bottom: .2rem solid var(--a-color);
+}
+.on-focus-mode #write a .md-plain, .on-focus-mode .md-htmlblock-container a:hover {
+    border-bottom: .1rem solid var(--blur-text-color);
+}
+#write a .md-plain, .md-htmlblock-container a:hover,
+.on-focus-mode #write .md-focus a .md-plain, .md-focus .md-htmlblock-container a:hover {
+    border-bottom: .1rem solid var(--a-color);
+}
+[md-inline=link] a {
+    margin: 0 .2rem;
+}
+a:any-link {
+    color: var(--a-color);
+}
+
+img {
+    border-left: none;
+    border-right: none;
+    vertical-align: baseline;
+    border-radius: 2px;
+}
+
+#write {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 30px 100px;
+}
+#typora-source .CodeMirror-lines {
+    max-width: 1200px;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+    margin-top: 30px;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--title-font);
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+    color: var(--title-color);
+}
+
+h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
+    visibility: hidden;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.on-focus-mode h2.md-end-block.md-heading:not(.md-focus):not(.md-focus-container):after {
+    background-color: var(--blur-text-color) !important;
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit !important;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit !important;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit !important;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit !important;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit !important;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit !important;
+}
+
+p, blockquote, ul, ol, dl, table {
+    margin: var(--p-spacing) 0;
+}
+
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+li {
+    margin: 0.5em 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: var(--horizontal-divider-color);
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul, ol {
+    padding-inline-start: 2em;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+.ty-table-edit {
+    margin-top: -1rem !important;
+}
+#write table {
+    margin-top: 1rem;
+    word-break: initial;
+    background-color: var(--table-bg-color);
+}
+table tr {
+    border-top: .1em solid var(--table-border-color);
+    margin: 0;
+    padding: 0;
+}
+table th {
+    font-weight: bold;
+    border: .1em solid var(--table-border-color);
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: .1em solid var(--table-border-color);
+    margin: 0;
+    padding: 6px 13px;
+}
+table thead {
+    background-color: var(--table-header-bg-color);
+}
+table tr:nth-child(2n) {
+    background-color: var(--table-n2-bg-color);
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write em {
+    padding: 0 5px 0 2px;
+}
+
+/* height light */
+#write mark {
+    border: .1em solid var(--height-light-border-color);
+    color: var(--height-light-color);
+    background-color: transparent;
+    padding: .1rem .5rem;
+    border-radius: 2rem;
+    margin: 0 .2rem;
+    font-size: .95rem;
+}
+
+/*shortcut*/
+kbd {
+    border: .1em solid #5b5b5e;
+    background: transparent;
+    color: var(--text-color);
+    margin: 0 .4rem;
+    font-family: var(--text-font) !important;
+    font-size: .95rem;
+    padding: .3em .4em;
+    border-radius: .4em;
+    box-shadow: .1em .1em .2em rgba(0, 0, 0, 0.3);
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 12px;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+/*YAML*/
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.45;
+    background-color: var(--yaml-bg-color);
+    border: 0;
+    border-radius: 2px;
+    color: var(--yaml-color);
+    margin-top: 0 !important;
+}
+
+.mathjax-block > .code-tooltip {
+    bottom: .375rem;
+}
+
+#write > h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write > h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image > .md-meta {
+    border-radius: 2px;
+    font-family: initial;
+    padding: 2px 0 0 4px;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.typora-quick-open-item {
+    font-size: 1rem !important;
+    height: 50px;
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#typora-quick-open {
+    box-shadow: 0 0 8px #00000045;
+    padding: 0;
+}
+
+.ty-quick-open-category.ty-has-prev .ty-quick-open-category-title {
+    border-top: none;
+}
+
+#typora-quick-open-input {
+    margin: 8px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+
+#typora-quick-open-input input {
+    font-size: 1rem;
+    box-shadow: none;
+    padding-top: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 32px;
+    max-height: 32px;
+    border: none;
+}
+
+.modal-dialog#typora-quick-open {
+    border-radius: 8px;
+}
+
+.ty-quick-open-category-title {
+    padding-left: 8px;
+    color: #BEBEBE;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.typora-quick-open-item-path {
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 1px;
+}
+
+/*export background*/
+.export-detail,
+.export-item.active,
+.export-items-list-control {
+    background: var(--active-file-bg-color) !important;
+}
+
+/*source code mode*/
+.cm-s-typora-default .CodeMirror-activeline-background,
+.typora-sourceview-on #toggle-sourceview-btn {
+    background: var(--active-file-bg-color);
+}
+
+/*search input*/
+.form-control {
+    border: none;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn {
+    border-radius: 2px;
+}
+
+#search-panel-replaceall-btn {
+    padding-right: 5px !important;
+    text-align: center !important;
+}
+
+#search-panel-replace-btn {
+    text-align: center !important;
+}
+
+#md-searchpanel input {
+    background: var(--input-bg-color);
+    border-radius: 2px;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 2px;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+}
+
+.searchpanel-search-option-btn.active {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: initial;
+}
+
+/*sidebar*/
+.file-library-node.file-tree-node.file-node-root {
+    font-size: var(--file-tree-text-size);
+}
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+.file-node-content {
+    display: flex;
+    align-items: center;
+}
+.file-node-open-state {
+    margin-right: .5rem;
+}
+.file-node-icon {
+    margin-right: .5rem;
+}
+
+#typora-sidebar {
+    font-size: inherit;
+    font-family: var(--title-font);
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.file-list-item-summary, .file-list-item-parent-loc, .file-list-item-time, .file-list-item-summary {
+    font-size: 0.9rem !important;
+    font-family: var(--text-font);
+}
+
+.file-list-item-file-ext-part {
+    display: none;
+}
+
+.outline-item {
+    font-size: var(--toc-text-size);
+}
+
+/*footnotes mark*/
+#write .md-footnote {
+    background-color: inherit;
+    color: var(--drake-highlight);
+    font-size: 0.9rem;
+    border-radius: 0.9rem;
+    padding-left: 0;
+}
+
+#write .md-footnote:before {
+    content: "[";
+}
+
+#write .md-footnote:after {
+    content: "]";
+}
+
+/*footnotes content*/
+.md-hover-tip .code-tooltip-content {
+    border-radius: 2px;
+}
+
+/*footnotes title*/
+span.md-def-name {
+    padding-right: 3ch;
+    padding-left: 0;
+    position: relative;
+    font-weight: normal;
+}
+
+/*footnotes desc*/
+.footnotes {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--text-color);
+    position: relative;
+}
+
+/*footnotes tooltip text*/
+.code-tooltip-content .md-plain {
+    font-size: 0.9rem;
+    font-family: inherit;
+}
+
+.code-tooltip-content code {
+    padding: 0 2px;
+    font-family: inherit;
+    color: var(--footnotes-highlight);
+    background-color: inherit;
+}
+
+.code-tooltip-content a {
+    color: var(--footnotes-highlight);
+}
+
+div.code-tooltip-content {
+    box-shadow: 0 0 8px #00000045;
+    background: var(--footnotes-bg-color);
+}
+
+.footnotes {
+    opacity: 1;
+}
+
+.md-def-name:after {
+    content: ". ^";
+    color: var(--text-color);
+}
+
+.md-def-footnote .md-def-name:before {
+    content: "";
+    color: var(--text-color);
+    position: absolute;
+}
+
+.md-def-name:before {
+    content: "";
+    color: var(--text-color);
+    position: absolute;
+}
+
+.md-content.md-url, .md-def-content.md-def-url.md-auto-disp {
+    text-decoration: none;
+    border-bottom: .1rem solid var(--text-color);
+}
+
+.CodeMirror-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.file-list-item-summary {
+    font-size: 1em;
+}
+
+.pin-outline #outline-content .outline-active strong, .pin-outline .outline-active {
+    font-weight: 500;
+    color: var(--outline-active-color);
+}
+
+.file-list-item.active {
+    border-left: 4px solid var(--drake-accent);
+}
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    box-shadow: none;
+    background: var(--btn-hover-bg-color);
+}
+
+/*checkbox*/
+#write input[type=checkbox] {
+    opacity: 0;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-left: -2em;
+    margin-top: 0;
+    top: 0;
+}
+
+#write .ul-list li.md-task-list-item.task-list-done::before {
+    content: "";
+    background: var(--checkbox-checked) 0 0 no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-left: -2em;
+}
+#write .ul-list li.md-task-list-item.task-list-not-done::before {
+    content: "";
+    background: var(--checkbox-unchecked) 0 0 no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-left: -2em;
+}
+.task-list-item p {
+    line-height: 1.6rem;
+}
+
+/*insert table*/
+.btn {
+    border-radius: 2px;
+}
+
+.modal-content {
+    border-radius: 8px;
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background-color: var(--btn-hover-bg-color);
+    color: var(--drake-highlight);
+}
+
+.btn-primary {
+    background-color: transparent;
+    color: var(--drake-highlight);
+}
+
+.btn-default {
+    background-color: transparent;
+}
+
+.btn:active {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+#table-insert-col, #table-insert-row {
+    background: var(--input-bg-color);
+    border-radius: 2px;
+}
+
+/*preference panel*/
+#megamenu-content {
+    background-image: none !important;
+    background-color: var(--bg-color);
+}
+#top-titlebar {
+    height: inherit;
+    background-color: var(--bg-color);
+}
+#megamenu-menu-sidebar {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.long-btn {
+    width: inherit;
+    min-width: 300px;
+    border: 1px solid var(--text-color);
+    border-radius: 6px;
+}
+.megamenu-menu-panel h1 {
+    margin-bottom: 3rem;
+    text-align: left;
+}
+.megamenu-menu-panel h1, .megamenu-menu-panel h2 {
+    font-weight: normal;
+}
+#recent-file-panel-search-input {
+    height: 45px;
+    border: none;
+    border-bottom: 1px solid var(--text-color);
+    padding-left: 8px;
+}
+#recent-file-panel-search-input::placeholder {
+    color: var(--text-color);
+    opacity: .5;
+}
+.megamenu-menu-header {
+    border-bottom: none;
+}
+#recent-file-panel-action-btn {
+    background: none;
+    border: none;
+}
+#recent-file-panel-action-btn-container {
+    float: none;
+    display: inline-block;
+}
+#top-titlebar .toolbar-icon.btn.hover, #top-titlebar .toolbar-icon.btn:hover {
+    background-color: var(--btn-hover-bg-color);
+    color: var(--text-color);
+}
+.megamenu-menu-panel .btn:hover {
+    background-color: var(--btn-hover-bg-color) !important;
+    color: var(--text-color);
+}
+#recent-file-panel tbody tr:nth-child(2n-1),
+.megamenu-menu-panel table thead,
+.megamenu-menu-panel table tr {
+    background-color: transparent;
+}
+.megamenu-menu-panel table {
+    font-weight: normal;
+}
+#megamenu-back-btn {
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+}
+.megamenu-menu-header #megamenu-menu-header-title {
+    color: var(--text-color);
+}
+header, .context-menu, .megamenu-content, footer {
+    font-family: var(--text-font);
+}
+.ty-preferences select {
+    padding-left: 2px;
+}
+.preference-item-hint {
+    font-size: 14px;
+}
+a.ty-link {
+    color: var(--a-color);
+    margin: 0 .2rem;
+}
+
+/**
+    code render
+    Name: IntelliJ IDEA darcula theme
+    From IntelliJ IDEA by JetBrains
+ */
+.cm-s-inner.CodeMirror {
+    background: none;
+    color: var(--code-block-color);
+}
+.cm-s-inner span.cm-meta {
+    color: #BBB529;
+}
+.cm-s-inner span.cm-number {
+    color: #6897BB;
+}
+.cm-s-inner span.cm-keyword {
+    color: #CC7832;
+}
+.cm-s-inner span.cm-def {
+    color: #FFD760;
+}
+.cm-s-inner span.cm-variable {
+    color: var(--code-block-color);
+}
+.cm-s-inner span.cm-variable-2 {
+    color: var(--code-block-color);
+}
+.cm-s-inner span.cm-variable-3 {
+    color: #9876AA;
+}
+.cm-s-inner span.cm-type {
+    color: #AABBCC;
+}
+.cm-s-inner span.cm-property {
+    color: #FFC66D;
+}
+.cm-s-inner span.cm-operator {
+    color: var(--code-block-color);
+}
+.cm-s-inner span.cm-string {
+    color: #6A8759;
+}
+.cm-s-inner span.cm-string-2 {
+    color: #6A8759;
+}
+.cm-s-inner span.cm-comment {
+    color: #787878;
+}
+.cm-s-inner span.cm-link {
+    color: #CC7832;
+}
+.cm-s-inner span.cm-atom {
+    color: #CC7832;
+}
+.cm-s-inner span.cm-error {
+    color: #BC3F3C;
+}
+.cm-s-inner span.cm-tag {
+    color: #E8BF6A;
+}
+.cm-s-inner span.cm-quote {
+    color: #a6e22e;
+}
+.cm-s-inner span.cm-attribute {
+    color: #9876AA;
+}
+.cm-s-inner span.cm-qualifier {
+    color: #6A8759;
+}
+.cm-s-inner span.cm-bracket {
+    color: #E8BF6A;
+}
+.cm-s-inner span.cm-builtin {
+    color: #FF9E59;
+}
+.cm-s-inner span.cm-special {
+    color: #FF9E59;
+}
+.cm-s-inner span.cm-matchhighlight {
+    color: #FFFFFF;
+    background-color: rgba(50, 89, 48, .7);
+    font-weight: normal;
+}
+.cm-s-inner span.cm-searching {
+    color: #FFFFFF;
+    background-color: rgba(61, 115, 59, .7);
+    font-weight: normal;
+}
+.cm-s-inner .CodeMirror-gutters {
+    border-right: 1px solid rgba(120, 120, 120, 0.3);
+    background: var(--code-block-bg-color);
+}
+.cm-s-inner .CodeMirror-linenumber {
+    color: #585b5d;
+}
+.cm-s-inner .CodeMirror-matchingbracket {
+    background-color: #3B514D;
+    color: #FFEF28 !important;
+}
+.cm-s-inner .CodeMirror-selected {
+    background: #214283 !important;
+}
+.cm-s-inner .CodeMirror-selectedtext {
+    background: #214283 !important;
+}
+.cm-s-typora-default .CodeMirror-selectedtext {
+    background: var(--select-text-bg-color) !important;
+}
+.cm-overlay.CodeMirror-selectedtext {
+    background: var(--select-text-bg-color) !important;
+}
+.cm-s-inner div.CodeMirror-cursor {
+    border-left: 1px solid var(--code-block-color);
+}
+.cm-s-inner .cm-header, .cm-s-inner.cm-header {
+    color: #FFD760;
+    font-weight: normal;
+}</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+<style type='text/css'  id="style-mac-print"> @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}</style>
+
+<title>posts_index</title>
 </head>
-<body>
-  <div class="container">
-	<!-- <div style="width: 1512px; height: 982px; position: relative; background: white; overflow: hidden"> -->
-  <h1>into to python for type design</h1>
-
-	<a target="_blank" alt="" href="https://github.com/connordavenport/Python-Workshops">
-	<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="black" class="bi bi-github" viewBox="0 0 16 16">
-	<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-	</svg></a>
-	
-	<a target="_blank" alt="" href="https://coopertype.org/events/intro-to-python-for-type-design-6">
-	<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="black" class="bi bi-share" viewBox="0 0 16 16">
-	<path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/></svg></a>
-
-
-  <p style="color: #6d07d8">
-	<span style="font-weight: 700;">instructor  </span><span>connor davenport</span><br/>
-	<span style="font-weight: 700;">class info  </span><span>thursdays, 18:30-21:30</span>
-	</p>
-	
-
-	<details open="true" >
-		<summary class="week" style=" color: black;">class 1</summary>
-	  <div>
-	  	<p>march 5 2026, 18:30</p>
-	  	<span><img src="icons/pencil.svg" style="width: 13px; height: 13px;"/></span> introduction, demos, basic overview<br/>
-	  	<span><img src="icons/house.svg" style="width: 13px; height: 13px;"/></span> rewrite each script and investigate how each works, changing variable and values.
-	  </div>
-	</details>
-  <br/><br/>
-  
-  <details>
-  	<br/>
-  	<p>march 12 2026, 18:30<br/>more info coming soon...</p>
-  	<summary class="week" style="color: #9B9B9B;">class 2</summary>
-  </details>
-
-  <br/><br/>
-  <details>
-  	<br/>
-  	<p>march 19 2026, 18:30<br/>more info coming soon...</p>
-  	<summary class="week" style="color: #9B9B9B;">class 3</summary>
-  </details>
-
-  <br/><br/>
-  <details>
-  	<br/>
-  	<p>march 26 2026, 18:30<br/>more info coming soon...</p>
-  	<summary class="week" style="color: #9B9B9B;">class 4</summary>
-  </details>
-
-  <br/>
-
-</div>
-</body></html>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h3 id='blogprogrammetools'><span>blog.programme.tools</span></h3><p><a href='https://programme.tools'><span>&lt;- personal site</span></a></p><p><span>this is the photo dump &quot;blog&quot; that was formerly hosted on tumblr</span></p><hr /><p>&nbsp;</p><p><img src="media/802043535772860416_0.gif"></p><p><span>programme.gif</span></p><p><span>December 4th, 2025 5:45pm</span></p><p><img src="media/802043474885115904_0.png"></p><p><span>December 4th, 2025 5:44pm</span></p><p><img src="media/802043304938274816_0.png"></p><p><span>December 4th, 2025 5:41pm</span></p><p><img src="media/749308341877096448_0.png"></p><p><span>May 1st, 2024 4:42pm</span></p><p><img src="media/749308290498969600_0.png"></p><h2 id='leipzig-roman'><span>Leipzig Roman?</span></h2><p><span>May 1st, 2024 4:41pm</span></p><p><img src="media/735789970120392704_0.gif"></p><p><span>again</span></p><p><span>December 4th, 2023 10:33am</span></p><p><img src="media/733882956122308608_0.png"></p><p><span>November 13th, 2023 9:22am</span></p><p><img src="media/733882218138779648_0.png"></p><p><span>November 13th, 2023 9:10am</span></p><p><img src="media/730519566969700352_0.png"></p><p><span>Kern Detective</span></p><p><span>October 7th, 2023 7:22am</span></p><p><img src="media/730004834269511680_0.png"></p><p><span>October 1st, 2023 3:01pm</span></p><p><img src="media/724724103251132416_0.png"></p><p><img src="media/724724103251132416_1.png"></p><p><span>August 4th, 2023 8:06am</span></p><p><img src="media/724286732889210880_0.png"></p><p><img src="media/724286732889210880_1.png"></p><p><span>July 30th, 2023 12:14pm</span></p><p><img src="media/722374367330320384_0.gif"></p><p><span>Condensed &lt;&gt; Regular &lt;&gt; Wide</span><br/><span>Straight &lt;&gt; Ellipise with no kinks</span></p><p><span>July 9th, 2023 9:38am</span></p><p><img src="media/722374332412805120_0.gif"></p><p><span>Condensed &lt;&gt; Regular &lt;&gt; Wide</span><br/><span>Straight Sides to</span></p><p><span>July 9th, 2023 9:37am</span></p><p><img src="media/722371897358188544_0.png"></p><p><span>July 9th, 2023 8:58am</span></p><p><img src="media/722371356450275328_0.png"></p><p><span>Hobo Carved in Sandstone (2023)</span></p><p><span>July 9th, 2023 8:50am</span></p><p><img src="media/698733655416242176_0.png"></p><p><img src="media/698733655416242176_1.png"></p><p><img src="media/698733655416242176_2.png"></p><p><span>Faux Antialiased OPSZ VF instances</span></p><p><span>October 21st, 2022 10:59am</span></p><p><span>VF in FontGoggles</span></p><p><span>October 17th, 2022 1:07pm</span></p><p><img src="media/698379046618333184.gif"></p><p><span>variable pixelation — pixel structure changes along optical size axis</span></p><p><span>October 17th, 2022 1:02pm</span></p><p><img src="media/673923066020151296.png"></p><p><span>chrome boys</span></p><p><span>January 20th, 2022 1:25pm</span></p><p><img src="media/617875943445413888_0.png"></p><p><span>Futura20</span></p><p><span>May 11th, 2020 11:00pm</span></p><p><img src="media/617867159031496704_0.png"></p><p><span>2 years later, a Display style</span></p><p><span>May 11th, 2020 8:40pm</span></p><p><img src="media/615051511829069824.png"></p><p><span>April 10th, 2020 6:47pm</span></p><p><img src="media/614410253906345984.png"></p><p><span>April 3rd, 2020 4:54pm</span></p><p><img src="media/613781424805462016.png"></p><p><span>March 27th, 2020 6:19pm</span></p><p><img src="media/611427739824701440_0.png"></p><p><span>March 1st, 2020 5:48pm</span></p><p><img src="media/190830589125.jpg"></p><p><span>2-14-20</span></p><p><span>February 14th, 2020 6:14pm</span></p><p><img src="media/190108813285.jpg"></p><p><span>“For Xochitl” playlist cover. Jan 2020</span></p><p><span>January 6th, 2020 6:03pm</span></p><p><img src="media/190024446720.png"></p><p><span>January 2nd, 2020 5:50pm</span></p><p><img src="media/189906631605.png"></p><p><span>APP</span></p><p><span>December 27th, 2019 5:20pm</span></p><p><img src="media/189763836895.png"></p><p><span>EL/B</span></p><p><span>December 19th, 2019 5:57pm</span></p><p><span> December 15th, 2019 4:03pm</span></p><p><img src="media/189653980485.png"></p><p><span>December 13th, 2019 6:14pm</span></p><p><img src="media/189600549155_0.jpg"></p><p><span>Lettering for the holiday card</span></p><p><span>December 10th, 2019 7:50pm</span></p><p><img src="media/189529865655_0.jpg"></p><p><span>December 7th, 2019 9:04am</span></p><p><img src="media/188960843696.png"></p><p><span>Some dumb stuff</span></p><p><span>November 10th, 2019 5:35pm</span></p><p><img src="media/188912090485_0.png"></p><p><img src="media/188912090485_1.png"></p><p><span>Wut</span></p><p><span>November 8th, 2019 6:05pm</span></p><p><img src="media/188790889090_0.png"></p><p><span>November 3rd, 2019 12:07pm</span></p><p><img src="media/188779272685_0.png"></p><p><span>November 2nd, 2019 11:29pm</span></p><p><img src="media/188711536060_0.jpg"></p><p><span>October 30th, 2019 9:28pm</span></p><p><img src="media/188438333400_0.jpg"></p><p><span>October 18th, 2019 9:03pm</span></p><p><img src="media/188254474840_0.jpg"></p><p><span>October 10th, 2019 7:35am</span></p><p><img src="media/187930015700.png"></p><p><span>September 24th, 2019 6:27pm</span></p><p><img src="media/187382194510.png"></p><p><span>August 30th, 2019 6:11pm</span></p><p><img src="media/187121252780.jpg"></p><p><span>harfBuzz</span></p><p><span>August 19th, 2019 12:06pm</span></p><p><img src="media/185814749570_0.jpg"></p><p><span>June 24th, 2019 8:08am</span></p><p><img src="media/185483892030.png"></p><p><span>Everything is Temporary—</span></p><p><span>June 9th, 2019 8:13pm</span></p><p><img src="media/185416262070.png"></p><p><span>June 6th, 2019 6:51pm</span></p><p><img src="media/185110470130.png"></p><p><span>May 24th, 2019 12:56pm</span></p><p><img src="media/184786236530.png"></p><p><span>May 10th, 2019 2:26pm</span></p><p><img src="media/184628495675.png"></p><p><span>skeletor loves compatible interpolation</span></p><p><span>May 3rd, 2019 5:13pm</span></p><p><a href='https://fuckyeahtypefacedesign.tumblr.com/post/183964799934'><span>fuckyeahtypefacedesign</span></a><span>:</span></p><blockquote><p><img src="media/183990080475_0.jpg"></p></blockquote><p><span>April 6th, 2019 1:27pm</span></p><p><img src="media/183912151560_0.png"></p><p><span>New tool in progress</span></p><p><span>April 3rd, 2019 8:03am</span></p><p><img src="media/183646496805.png"></p><p><a href='http://js-rp.tumblr.com/post/183566119234/uncolorized-early-sketch-for-sharp-type-digital'><span>js-rp</span></a><span>:</span></p><blockquote><p><span>Uncolorized early sketch for </span><a href='https://t.umblr.com/redirect?z=https%3A%2F%2Fsharptype.co%2Ftypefaces%2Fbeatrice%2F&amp;t=NWE3YjVjZmFjNTAzYTlhYzdkMjc4ZmEwZmYwNDhjYjI3ZWM1YjViMSxHY2hEMWd1YQ%3D%3D&amp;b=t%3ASFAI7O0O7uOQO5xAClEX_Q&amp;p=http%3A%2F%2Fjs-rp.tumblr.com%2Fpost%2F179352150214%2Funcolorized-early-sketch-for-sharp-type-digital&amp;m=1'><span>Sharp Type</span></a><span> digital specimen, Garnett by Connor Davenport, 2018</span></p></blockquote><p><span>March 23rd, 2019 5:06am</span></p><p><img src="media/183445426025.png"></p><p><span>I &lt;3 Madrid</span></p><p><span>March 14th, 2019 4:18am</span></p><p><img src="media/183271472595.png"></p><p><span>March 6th, 2019 2:42pm</span></p><p><img src="media/182852029740.png"></p><p><span>Püterschein Mono</span></p><p><span>February 16th, 2019 3:10pm</span></p><p><img src="media/182708503595_0.jpg"></p><p><span>Sculpin in Shoplifters 8</span></p><p><span>February 10th, 2019 10:04am</span></p><p><img src="media/182349759300_0.png"></p><p><span>January 27th, 2019 1:01pm</span></p><p><img src="media/182120490795.png"></p><p><span>January 18th, 2019 5:31pm</span></p><p><img src="media/181933911425.png"></p><p><span>January 11th, 2019 5:24pm</span></p><p><img src="media/181401448400.png"></p><p><span>December 25th, 2018 9:43am</span></p><p><img src="media/181323834915_0.jpg"></p><p><span>December 22nd, 2018 12:15pm</span></p><p><img src="media/181227235625.jpg"></p><p><span>gustave roman designspace</span></p><p><span>December 18th, 2018 3:37pm</span></p><p><img src="media/181116179160.jpg"></p><p><span>December 14th, 2018 3:24pm</span></p><p><img src="media/180896753805.gif"></p><p><span>Original Code via Jo Lang </span><a href='https://github.com/jo-lang/traversing_designspaces' target='_blank' class='url'>https://github.com/jo-lang/traversing_designspaces</a></p><p><span>December 7th, 2018 1:26pm</span></p><p><img src="media/180669547875.png"></p><p><span>Dzzhe U+052B  </span></p><p><span>November 30th, 2018 8:46pm</span></p><p><img src="media/179805815775.png"></p><p><span>Im giving another lecture about the banality of typeface design.</span></p><p><span>November 5th, 2018 7:19pm</span></p><p><img src="media/179114203310_0.jpg"></p><p><span>October 16th, 2018 11:02am</span></p><p><img src="media/178090692130.png"></p><p><span>September 14th, 2018 7:28pm</span></p><p><img src="media/178079683400.png"></p><p><span>September 14th, 2018 12:32pm</span></p><p><img src="media/178025374600.png"></p><p><span>new favorite word</span></p><p><span>September 12th, 2018 8:42pm</span></p><p><img src="media/177913962855.png"></p><p><span>September 9th, 2018 3:55pm</span></p><p><img src="media/177800819910.png"></p><p><span>SOOOOOOOOOOOON</span></p><p><span>September 6th, 2018 9:25am</span></p><p><img src="media/177754672060.png"></p><p><span>September 5th, 2018 12:10am</span></p><p><img src="media/177173533820.jpg"></p><p><span>August 19th, 2018 3:27pm</span></p><p><img src="media/176968618585.png"></p><p><span>August 13th, 2018 8:23pm</span></p><p><img src="media/176450860765.jpg"></p><p><span>July 30th, 2018 1:54pm</span></p><p><img src="media/176247331795.png"></p><p><span>Grave Mono</span></p><p><span>July 24th, 2018 8:40pm</span></p><p><img src="media/176214975565.png"></p><p><span>teach kids to code in this</span></p><p><span>July 23rd, 2018 10:27pm</span></p><p><img src="media/176137646500.png"></p><p><span>Two Line Great Primer. Very much a WIP</span></p><p><span>July 21st, 2018 6:56pm</span></p><p><img src="media/176105419925.png"></p><p><span>July 20th, 2018 7:59pm</span></p><p><img src="media/176096287860.png"></p><p><span>July 20th, 2018 2:14pm</span></p><p><img src="media/176053840595.png"></p><p><span>ALMOST</span></p><p><span>July 19th, 2018 8:29am</span></p><p><img src="media/176001246985.png"></p><p><span>Figgins’ English Ornamented. c1828</span></p><p><span>July 17th, 2018 7:22pm</span></p><p><img src="media/175255738125.jpg"></p><p><span>June 25th, 2018 8:46pm</span></p><p><img src="media/175218217575.png"></p><p><span>Sculpin</span></p><p><span>June 24th, 2018 6:36pm</span></p><p><span> June 23rd, 2018 8:54am</span></p><p><span>Bourbon</span></p><p><span>June 5th, 2018 9:24pm</span></p><p><img src="media/174581111285_0.png"></p><p><img src="media/174581111285_1.png"></p><p><span>June 4th, 2018 8:26pm</span></p><p><img src="media/174536667100.png"></p><p><span>Bourbon Bold</span></p><p><span>June 3rd, 2018 1:44pm</span></p><p><span>Variable Troubleshooting</span></p><p><span>June 1st, 2018 5:47pm</span></p><p><img src="media/174465913960.jpg"></p><p><span>3 years of /a’s —they were horrendous for the first 2.9 years</span></p><p><span>June 1st, 2018 9:03am</span></p><p><img src="media/174303906905.png"></p><p><span>“Revived” some Dwiggins lettering</span></p><p><span>May 27th, 2018 10:53am</span></p><p><img src="media/174162629115.jpg"></p><p><span>May 22nd, 2018 8:43pm</span></p><p><span> May 7th, 2018 7:39pm</span></p><p><img src="media/173452538005.png"></p><p><span>oops</span></p><p><span>April 30th, 2018 12:14pm</span></p><p><img src="media/173110289915.png"></p><p><span>April 19th, 2018 8:03pm</span></p><p><span> April 19th, 2018 7:08pm</span></p><p><img src="media/172899208435.jpg"></p><p><span>Thanks Lucas:)</span></p><p><span>April 13th, 2018 2:00pm</span></p><p><img src="media/172878861640.jpg"></p><p><span>Gustave</span></p><p><span>April 12th, 2018 9:57pm</span></p><p><img src="media/172858841515.png"></p><p><span>April 12th, 2018 8:57am</span></p><p><img src="media/172811998130.png"></p><p><span>faber oldstyle cyrillic</span></p><p><span>April 10th, 2018 10:02pm</span></p><p><img src="media/172704781540.png"></p><p><span>Grave Mono Greek?</span></p><p><span>April 7th, 2018 7:51pm</span></p><p><img src="media/172669376750.jpg"></p><p><span>April 6th, 2018 6:25pm</span></p><p><img src="media/172588749080.gif"></p><p><span>April 4th, 2018 9:41am</span></p><p><span>Sculpin Variable</span></p><p><span>April 2nd, 2018 9:33pm</span></p><p><img src="media/172421060410.jpg"></p><p><span>Fleischman’s Blackletter</span></p><p><span>March 30th, 2018 3:32pm</span></p><p><img src="media/172393755045.gif"></p><p><span>March 29th, 2018 8:03pm</span></p><p><img src="media/172348771625.png"></p><p><span>obsidian lombardic…jk this will never happen</span></p><p><span>March 28th, 2018 1:36pm</span></p><p><img src="media/172114464105.jpg"></p><p><span>March 21st, 2018 6:05pm</span></p><p><img src="media/171457097625.png"></p><p><span>this is a real hairline</span></p><p><span>March 2nd, 2018 2:24pm</span></p><p><img src="media/171125765460.png"></p><p><span>February 21st, 2018 7:57am</span></p><p><span> February 18th, 2018 2:49pm</span></p><p><img src="media/170921365950.png"></p><p><span>February 15th, 2018 6:26pm</span></p><p><span>Sculpin is wild as a VF</span></p><p><span>February 9th, 2018 11:04am</span></p><p><span>it only took me a year and change but I finally generated a working variable font..</span></p><p><span>February 9th, 2018 10:20am variablefonts</span></p><p><img src="media/170590905645_0.jpg"></p><p><img src="media/170590905645_1.jpg"></p><p><span>The picture on Amazon vs. what you actually get</span></p><p><span>February 6th, 2018 7:00pm</span></p><p><img src="media/170490146895.jpg"></p><p><span>February 4th, 2018 5:53am</span></p><p><img src="media/170423807815.png"></p><p><span>3 years or so</span></p><p><span>February 2nd, 2018 12:49pm</span></p><p><img src="media/170020951815.jpg"></p><p><span>Lombardic caps for my new tattoo ***this picture was taken at a weird angle, the tattoo looks distorted</span></p><p><span>January 22nd, 2018 8:58pm</span></p><p><img src="media/169900609990.png"></p><p><span>finishing up some type for my new tattoo</span></p><p><span>January 19th, 2018 6:07pm</span></p><p><img src="media/169885822290.png"></p><p><span>January 19th, 2018 9:07am</span></p><p><img src="media/169779095875.jpg"></p><p><span>January 16th, 2018 1:02pm</span></p><p><img src="media/169749491410.png"></p><p><span>very 2018</span></p><p><span>January 15th, 2018 5:57pm</span></p><p><img src="media/169595049110.jpg"></p><p><span>January 11th, 2018 6:15pm</span></p><p><img src="media/169154283295.png"></p><p><span>Pointed pen</span></p><p><span>December 31st, 2017 12:03pm</span></p><p><img src="media/169074476430.jpg"></p><p><span>Day 2 of Apple Pencil</span></p><p><span>December 29th, 2017 9:34am</span></p><p><img src="media/168978850965.jpg"></p><p><span>iPad sketches</span></p><p><span>December 26th, 2017 7:18pm</span></p><p><img src="media/168829333170.png"></p><p><span>Based on Charles Derriey lettering  </span></p><p><span>December 22nd, 2017 2:39pm</span></p><p><img src="media/168797099785.png"></p><p><span>December 21st, 2017 4:17pm</span></p><p><img src="media/168752798370.png"></p><p><span>December 20th, 2017 10:14am</span></p><p><img src="media/168700880960.png"></p><p><span>taking a stab at some new scripts after work today</span></p><p><span>December 18th, 2017 10:05pm</span></p><p><img src="media/168407592460.png"></p><p><span>Romain du Connor</span></p><p><span>December 10th, 2017 5:57pm</span></p><p><img src="media/168400370485.jpg"></p><p><span>feature ss01 {</span><br/><span>sub @class_R by @class_R_alt;</span><br/><span>sub germandbls by germandbls.alt;</span><br/><span>} ss01;</span></p><p><span>December 10th, 2017 2:10pm</span></p><p><img src="media/168400298005.jpg"></p><p><span>Dwiggins</span></p><p><span>December 10th, 2017 2:07pm</span></p><p><img src="media/168272727620.png"></p><p><span>Size and Roundness axes</span></p><p><span>December 6th, 2017 8:13pm</span></p><p><img src="media/168235236365.jpg"></p><p><span>Dwiggins-esque</span></p><p><span>December 5th, 2017 6:28pm</span></p><p><img src="media/168201697695.png"></p><p><span>December 4th, 2017 7:24pm</span></p><p><img src="media/168127238950.png"></p><p><span>December 2nd, 2017 6:24pm</span></p><p><img src="media/168082085735.png"></p><p><span>December 1st, 2017 11:37am</span></p><p><img src="media/168078083560.png"></p><p><span>December 1st, 2017 8:39am</span></p><p><img src="media/168024624345.png"></p><p><span>Plimpton</span></p><p><span>November 29th, 2017 6:09pm</span></p><p><img src="media/167694153350.jpg"></p><p><span>I️ have the same birthday as the legendary Rudolf Koch😱</span></p><p><span>November 20th, 2017 6:14am</span></p><p><img src="media/167660678300.png"></p><p><span>November 19th, 2017 9:59am</span></p><p><img src="media/167622744535.jpg"></p><p><span>10 unit stems</span></p><p><span>November 18th, 2017 8:24am</span></p><p><img src="media/167497525085.png"></p><p><span>.alt</span></p><p><span>November 14th, 2017 5:15pm</span></p><p><img src="media/167488992050.png"></p><p><span>based on some lettering I found at the Alcazar de Sevilla</span></p><p><span>November 14th, 2017 11:59am</span></p><p><img src="media/167334086030.png"></p><p><span>Vamos!!</span></p><p><span>November 10th, 2017 3:42am</span></p><p><img src="media/167275479840.jpg"></p><p><span>November 8th, 2017 1:43pm</span></p><p><img src="media/167152711100.png"></p><p><span>November 5th, 2017 5:46am</span></p><p><img src="media/166850297950.png"></p><p><span>garnett grot italic</span></p><p><span>October 27th, 2017 12:13pm</span></p><p><img src="media/165910643260.png"></p><p><span>September 30th, 2017 5:42pm</span></p><p><span>Alternates</span></p><p><span>September 25th, 2017 7:41pm</span></p><p><img src="media/165583384555.gif"></p><p><span>Garnett Arabic Variable Justification</span></p><p><span>September 21st, 2017 10:54am</span></p><p><img src="media/165530224340.png"></p><p><span>my interpretation of </span><em><span>Delphin</span></em></p><p><span>September 19th, 2017 9:40pm</span></p><p><img src="media/165494132910.gif"></p><p><span>old piece of Arabic lettering I did for a friend</span></p><p><span>September 18th, 2017 9:29pm</span></p><p><img src="media/164897850550_0.png"></p><p><img src="media/164897850550_1.png"></p><p><img src="media/164897850550_2.png"></p><p><img src="media/164897850550_3.png"></p><p><span>I love this tool</span></p><p><span>September 2nd, 2017 11:34am</span></p><p><img src="media/164648768545.png"></p><p><span>re-working italics from scratch on this lovely Saturday night</span></p><p><span>August 26th, 2017 6:02pm</span></p><p><img src="media/164339561485.png"></p><p><span>August 18th, 2017 3:49pm</span></p><p><a href='https://sharptype.co/about-us/' target='_blank' class='url'>https://sharptype.co/about-us/</a><span>  </span></p><p><span>😱</span></p><p><span>August 3rd, 2017 10:47am</span></p><p><img src="media/161318451465.png"></p><p><span>weightsssssssssss</span></p><p><span>June 1st, 2017 11:39am</span></p><p><img src="media/161167458370_0.jpg"></p><p><img src="media/161167458370_1.jpg"></p><p><strong><span>Parhelic Display Regular</span></strong></p><p><span>May 28th, 2017 12:17pm</span></p><p><img src="media/161137950110.jpg"></p><p><span>random song name as font name</span></p><p><span>May 27th, 2017 4:06pm</span></p><p><img src="media/161137527530.png"></p><p><span>May 27th, 2017 3:53pm</span></p><p><span>Blackletter Interpolation</span></p><p><span>May 25th, 2017 10:36pm</span></p><p><img src="media/161078799795.png"></p><p><span>May 25th, 2017 10:24pm</span></p><p><img src="media/160992104400.png"></p><p><span>maybe ill just name it Davenport…</span></p><p><span>May 23rd, 2017 2:37pm</span></p><p><a href='https://www.instagram.com/p/BT4L6G3g1Ul/'></a></p><p><span>My typeface Hadrian was casted in cement by @n_0_r_a :)</span></p><p><span>May 9th, 2017 12:14pm</span></p><p><img src="media/160068957185.jpg"></p><p><span>thanks vista print</span></p><p><span>April 27th, 2017 9:53pm</span></p><p><img src="media/160067858300.jpg"></p><p><span>Gustave Text</span></p><p><span>April 27th, 2017 9:15pm</span></p><p><img src="media/160060587390_0.png"></p><p><img src="media/160060587390_1.jpg"></p><p><span>“revived” Dwiggin’s Tippecanoe /g  </span></p><p><span>April 27th, 2017 5:03pm</span></p><p><img src="media/159983316465.gif"></p><p><span>books came in</span></p><p><span>April 25th, 2017 2:20pm</span></p><p><span>“variable” optical sized script “E”  </span></p><p><span>April 24th, 2017 12:14pm</span></p><p><img src="media/159941987590.png"></p><p><span>found my new favorite color</span></p><p><span>April 24th, 2017 12:00pm</span></p><p><img src="media/159940591475.png"></p><p><span>finalizing vinyl</span></p><p><span>April 24th, 2017 11:08am</span></p><p><img src="media/159864967935.png"></p><p><span>Up’ed the UPM to 4000 lol</span></p><p><span>April 22nd, 2017 11:42am</span></p><p><img src="media/159806222005.png"></p><p><span>some lettering i “revived”</span></p><p><span>April 20th, 2017 7:29pm</span></p><p><img src="media/159799107455.jpg"></p><p><span>April 20th, 2017 3:41pm</span></p><p><img src="media/159731781720.png"></p><p><span>i guess this typeface is going to support Cyrillic as well;)</span></p><p><span>April 18th, 2017 6:50pm</span></p><p><img src="media/159723255100.png"></p><p><span>backletter cap alts</span></p><p><span>April 18th, 2017 2:18pm</span></p><p><img src="media/159688465800.png"></p><p><span>April 17th, 2017 4:08pm</span></p><p><img src="media/159477371315.gif"></p><p><span>when you have to explain to someone what a monospace is…</span></p><p><span>April 11th, 2017 11:50pm</span></p><p><img src="media/159458045505.png"></p><p><span>started drawing a weird Caslon to take my mind off thesis for a few minutes</span></p><p><span>April 11th, 2017 1:18pm</span></p><p><img src="media/159454340370.gif"></p><p><span>finally figured it out</span></p><p><span>April 11th, 2017 11:00am</span></p><p><img src="media/159321549745_0.jpg"></p><p><img src="media/159321549745_1.jpg"></p><p><img src="media/159321549745_2.jpg"></p><p><img src="media/159321549745_3.jpg"></p><p><img src="media/159321549745_4.jpg"></p><p><img src="media/159321549745_5.jpg"></p><p><img src="media/159321549745_6.jpg"></p><p><span>14/41 specimens pages</span></p><p><span>April 7th, 2017 9:59pm</span></p><p><img src="media/159290908910.png"></p><p><span>EVERY monospace typeface NEEDS a www liga….</span></p><p><span>April 7th, 2017 12:51am</span></p><p><img src="media/159283976190.png"></p><p><span>yup, thats exactly what I was going for</span></p><p><span>April 6th, 2017 9:00pm</span></p><p><img src="media/159271220340.jpg"></p><p><span>agua y libro</span></p><p><span>April 6th, 2017 1:59pm</span></p><p><img src="media/159267427660.png"></p><p><span>files have been generated</span></p><p><span>April 6th, 2017 11:39am</span></p><p><img src="media/159247660940.png"></p><p><span>I’ve officially found every way to make my essays for my non-design classes relate back to type. this is for folk art lol</span></p><p><span>April 5th, 2017 9:26pm</span></p><p><img src="media/159126607185.jpg"></p><p><span>Test #1</span></p><p><span>April 2nd, 2017 5:42pm</span></p><p><img src="media/158988825065.png"></p><p><span>sprages</span></p><p><span>March 29th, 2017 11:40pm</span></p><p><img src="media/158979577275_0.jpg"></p><p><img src="media/158979577275_1.jpg"></p><p><img src="media/158979577275_2.jpg"></p><p><span>thesis book;) just wait for this fuego to drop on May 11th 🤘🏼</span></p><p><span>March 29th, 2017 6:33pm</span></p><p><img src="media/158952929075.png"></p><p><span>why not design a scotch roman also? have to give it the feel of a real 19th C. specimen, duhhh</span></p><p><span>March 29th, 2017 12:02am</span></p><p><img src="media/158908882365.png"></p><p><span>March 27th, 2017 8:13pm</span></p><p><img src="media/158903545630.png"></p><p><span>March 27th, 2017 5:23pm</span></p><p><img src="media/158896458285.jpg"></p><p><span>thesis flag is about to be sent to the printer;)</span></p><p><span>March 27th, 2017 1:42pm</span></p><p><img src="media/158895220370.png"></p><p><span>March 27th, 2017 12:59pm</span></p><p><img src="media/158878145790.png"></p><p><span>March 27th, 2017 12:05am</span></p><p><img src="media/158794004315.png"></p><p><span>a little illustration for my thesis book, based on a Dwiggins illustration about book printing quality</span></p><p><span>March 24th, 2017 8:15pm</span></p><p><span>interpolating italics?!</span></p><p><span>March 23rd, 2017 2:09pm</span></p><p><img src="media/158727652630.png"></p><p><span>GARNETT MODERN BACKSLANT</span></p><p><span>March 22nd, 2017 11:32pm</span></p><p><img src="media/158705347400.jpg"></p><p><span>book cover ideas. ROUND 1/1000000</span></p><p><span>March 22nd, 2017 11:27am</span></p><p><img src="media/158689637025_0.jpg"></p><p><img src="media/158689637025_1.jpg"></p><p><img src="media/158689637025_2.jpg"></p><p><img src="media/158689637025_3.jpg"></p><p><span>Exhibition plans</span></p><p><span>March 21st, 2017 11:13pm</span></p><p><img src="media/158673559160.png"></p><p><span>March 21st, 2017 2:52pm</span></p><p><img src="media/158642099165_0.png"></p><p><img src="media/158642099165_1.png"></p><p><span>Garnett Modern Ornamented</span></p><p><span>March 20th, 2017 6:08pm</span></p><p><span>Chichester Titling</span></p><p><span>March 20th, 2017 11:58am</span></p><p><img src="media/158602683805.png"></p><p><span>thesis exhibition plan</span></p><p><span>March 19th, 2017 5:59pm</span></p><p><img src="media/158592879380.png"></p><p><span>March 19th, 2017 1:16pm</span></p><p><img src="media/158519823755.jpg"></p><p><span>March 17th, 2017 3:14pm</span></p><p><img src="media/158488280080.png"></p><p><span>March 16th, 2017 6:08pm</span></p><p><img src="media/158488210810.png"></p><p><span>i love this texture</span></p><p><span>March 16th, 2017 6:06pm</span></p><p><img src="media/158458779365.png"></p><p><span>NEW TYPE IN THE WORKS</span></p><p><span>March 15th, 2017 10:24pm</span></p><p><img src="media/158448646955.png"></p><p><span>NEW GILL STUFF FOR GRADUATION SHOW:)</span></p><p><span>March 15th, 2017 5:15pm</span></p><p><span>A custom typeface for </span><a href='http://cargocollective.com/seckmangadd'><span>Isabel Gadd</span></a><span>.</span></p><p><span>March 15th, 2017 3:00pm</span></p><p><img src="media/158162208750.jpg"></p><p><span>finally figured out the antique figures!</span></p><p><span>March 8th, 2017 3:51pm</span></p><p><span> March 8th, 2017 12:24am</span></p><p><img src="media/158137463320.png"></p><p><span>March 7th, 2017 11:44pm</span></p><p><img src="media/158116742220.png"></p><p><span>Garnett Semi-Bold American</span></p><p><span>March 7th, 2017 1:28pm</span></p><p><img src="media/158108449890.png"></p><p><span>this took sooo damn long but I&#39;m feeling the interpolations right now</span></p><p><span>March 7th, 2017 8:36am</span></p><p><img src="media/158097722315.png"></p><p><span>finally, an s that isnt hideous</span></p><p><span>March 7th, 2017 12:25am</span></p><p><img src="media/158092096145.jpg"></p><p><span>March 6th, 2017 9:49pm</span></p><p><img src="media/158088162970.png"></p><p><span>interpolationnnnnnnn</span></p><p><span>March 6th, 2017 7:56pm</span></p><p><img src="media/158082952465.png"></p><p><span>thesis exhibition mockups … proposalV1.1</span></p><p><span>March 6th, 2017 5:24pm</span></p><p><img src="media/158001249725.jpg"></p><p><span>sketching some ornamented type for a huge flag that I am designing for thesis</span></p><p><span>March 4th, 2017 6:54pm</span></p><p><img src="media/157919762440.gif"></p><p><span>Custom version fo Garnett Modern/Fatface for a flag;)</span></p><p><span>March 2nd, 2017 5:56pm</span></p><p><img src="media/157825811790.jpg"></p><p><span>Lombardic capitals based on initials from an 1884 Palmer &amp; Rey Specimen</span></p><p><span>February 28th, 2017 11:43am</span></p><p><img src="media/157798365660.png"></p><p><span>February 27th, 2017 6:48pm</span></p><p><img src="media/157783165245.png"></p><p><span>my good friend </span><a href='https://tmblr.co/mhYjkx6Os2TTUe879r_eHyw'><span>@whostheluckylady</span></a><span> is using a beta version of Garnett Antique for his website!</span></p><p><span>February 27th, 2017 11:25am</span></p><p><img src="media/157673643450.jpg"></p><p><span>Proofed 10 masters today with Tal:)</span></p><p><span>February 24th, 2017 9:05pm</span></p><p><img src="media/157673615055.jpg"></p><p><span>Applying for my dream job:)</span></p><p><span>February 24th, 2017 9:04pm</span></p><p><img src="media/157658867870.jpg"></p><p><span>Current status of thesis</span></p><p><span>February 24th, 2017 1:23pm</span></p><p><img src="media/157635074430.png"></p><p><span>christ i love type design</span></p><p><span>February 23rd, 2017 9:51pm</span></p><p><img src="media/157615724055.png"></p><p><span>February 23rd, 2017 11:59am</span></p><p><img src="media/157613545900.png"></p><p><span>when you’re a type designer but also listen to 21 savage</span></p><p><span>February 23rd, 2017 10:41am</span></p><p><img src="media/157592544475_0.png"></p><p><img src="media/157592544475_1.png"></p><p><span>long day of prepolation</span></p><p><span>February 22nd, 2017 9:00pm</span></p><p><img src="media/157576716760.jpg"></p><p><span>The process of some Arabic lettering I did today for a friend. I like to consider it Burbank Arabic:)</span></p><p><span>February 22nd, 2017 1:10pm</span></p><p><img src="media/157575772695.png"></p><p><span>granjon-esque</span></p><p><span>February 22nd, 2017 12:39pm</span></p><p><img src="media/157533479995.gif"></p><p><span>Garnett’s dollar sign changes as the weight increases</span></p><p><span>February 21st, 2017 12:29pm</span></p><p><img src="media/157528192305.png"></p><p><span>for my book, an ATTEMPT at “reviving’ one of Claude Garamont’s punches</span></p><p><span>February 21st, 2017 9:17am</span></p><p><img src="media/157505702270.gif"></p><p><span>Stylistic Sets for Thesis</span></p><p><span>February 20th, 2017 7:29pm</span></p><p><img src="media/157462046185.jpg"></p><p><span>testing the antique italics</span></p><p><span>February 19th, 2017 7:48pm</span></p><p><span>behind the scenes of lowercase ‘k’ of Garnett Antique</span></p><p><span>February 19th, 2017 6:05pm</span></p><p><span>Kaleidoscopolation™</span></p><p><span>February 17th, 2017 2:44pm</span></p><p><span>tal leming said that the forms needed square tidles because the typeface wasnt “friendly” (not a bad thing)—cleary he was wrong. this is a pretty damn friendly typeface</span></p><p><span>February 16th, 2017 11:27pm</span></p><p><img src="media/157332035075.png"></p><p><span>Garnett Latin, Cyrillic, Arabic &amp; Devanagari  </span></p><p><span>February 16th, 2017 6:19pm</span></p><p><img src="media/157325384820.gif"></p><p><span>this is so much fun</span></p><p><span>February 16th, 2017 3:09pm</span></p><p><img src="media/157322893375.jpg"></p><p><span>i love eastern scripts</span></p><p><span>February 16th, 2017 1:51pm</span></p><p><img src="media/157296804790.gif"></p><p><span>First attempt at designing Arabic. soooooo much fun</span></p><p><span>February 15th, 2017 9:06pm</span></p><p><span>“variable” bracketing</span></p><p><span>February 14th, 2017 5:08pm</span></p><p><img src="media/157070871630.gif"></p><p><span>February 10th, 2017 2:55pm</span></p><p><img src="media/157046578055.jpg"></p><p><span>Garnett Modern is an interpretation of a British Modern but with the quirks of a 19th cent. Grotesque and some didone flavor</span></p><p><span>February 9th, 2017 11:05pm</span></p><p><img src="media/157043466525.png"></p><p><span>2unit horizontal hairlines, that bottom right corner of the bowl in the /a was a nightmare</span></p><p><span>February 9th, 2017 9:38pm</span></p><p><img src="media/157037719505.jpg"></p><p><span>Garnett Modern</span></p><p><span>February 9th, 2017 6:52pm</span></p><p><img src="media/157021519360.png"></p><p><span>Catich</span></p><p><span>February 9th, 2017 11:03am</span></p><p><img src="media/157018024800.png"></p><p><span>I spotted a UFO in the sky last night</span></p><p><span>February 9th, 2017 8:59am</span></p><p><img src="media/156975790050.png"></p><p><span>thesis essay in the works</span></p><p><span>February 8th, 2017 8:55am</span></p><p><img src="media/156905848570.png"></p><p><span>Who would&#39;ve thought that I would be publishing my first type through such an amazing foundry:) I still can’t believe that I am almost done with the 2 year long project.</span></p><p><span>February 6th, 2017 5:15pm</span></p><p><span>Im making a faux Letraset sheet for my upcoming typeface. Instead of meticulously setting the space indicators, I just drew them in the font file so I can set the specimen 100x faster :) innovation:)</span></p><p><span>February 5th, 2017 6:14pm</span></p><p><img src="media/156851223220.png"></p><p><span>when you accidently open every font file on your computer……. (dont judge for the typefaces that you see…i didnt know better when i was 15)</span></p><p><span>February 5th, 2017 12:56pm</span></p><p><img src="media/156779248230.png"></p><p><span>Tal was joking when he said to do a Tuscan, I wasn&#39;t when I said okay. yes, i know this looks terrible</span></p><p><span>February 3rd, 2017 8:15pm</span></p><p><img src="media/156746446510.jpg"></p><p><span>Almost 16 hours of work on the Antique today.</span></p><p><span>February 3rd, 2017 12:37am</span></p><p><img src="media/156732483640.gif"></p><p><span>WOAH. this typeface has become my life</span></p><p><span>February 2nd, 2017 5:58pm</span></p><p><img src="media/156714345600.png"></p><p><span>Garnett Cyrillic</span></p><p><span>February 2nd, 2017 8:41am</span></p><p><img src="media/156698190225.png"></p><p><span>February 1st, 2017 10:16pm</span></p><p><img src="media/156695636965.jpg"></p><p><span>this is what thesis is doing to me</span></p><p><span>February 1st, 2017 9:08pm</span></p><p><img src="media/156643427275.png"></p><p><span>pi in garnett</span></p><p><span>January 31st, 2017 5:39pm</span></p><p><img src="media/156592380045.png"></p><p><span>January 30th, 2017 2:59pm</span></p><p><span>Started coding today</span></p><p><span>January 30th, 2017 11:18am</span></p><p><img src="media/156499734650.png"></p><p><span>January 28th, 2017 3:39pm</span></p><p><img src="media/156464902230.png"></p><p><span>new website for thesis is a digital archiving system of terms related to my project. the site tracks the user’s mouse as they explore the digital environment</span></p><p><span>Using two of my in-progress typefaces, Garnett and Gustave</span></p><p><span>January 27th, 2017 7:58pm</span></p><p><img src="media/156424951710.png"></p><p><span>workkkkiing on that new website that acts as a digital archiving database. with a twist</span></p><p><span>January 26th, 2017 9:38pm</span></p><p><img src="media/156370344665.jpg"></p><p><span>masthead for a new website that I’m working on</span></p><p><span>January 25th, 2017 4:57pm</span></p><p><img src="media/156370274375.png"></p><p><span>masthead for a new website that I’m working on</span></p><p><span>January 25th, 2017 4:55pm</span></p><p><img src="media/156321070950.jpg"></p><p><span>typographic gradient using Garnett Typewriter</span></p><p><span>January 24th, 2017 2:51pm</span></p><p><img src="media/156294449215.jpg"></p><p><span>undergraduate thesis, in progress</span></p><p><span>January 23rd, 2017 11:02pm</span></p><p><img src="media/156293745475.png"></p><p><span>if only InDesign could interpolate my UFO masters:(</span></p><p><span>January 23rd, 2017 10:44pm</span></p><p><img src="media/156291198075.png"></p><p><span>4/1000000 masters</span></p><p><span>January 23rd, 2017 9:39pm</span></p><p><img src="media/156239063055.png"></p><p><span>January 22nd, 2017 7:15pm</span></p><p><img src="media/156239053345.png"></p><p><span>January 22nd, 2017 7:15pm</span></p><p><img src="media/156194653040.jpg"></p><p><span>One of the best days, at the DC march. Oh and my protest poster is viral now UPDATE: more than 2K likes</span></p><p><span>January 21st, 2017 9:25pm</span></p><p><img src="media/156149247585.jpg"></p><p><span>First real in-use of my thesis typeface, Garnett</span></p><p><span>January 20th, 2017 9:36pm</span></p><p><img src="media/156105472735.png"></p><p><span>January 19th, 2017 9:33pm</span></p><p><img src="media/156096488940.gif"></p><p><span>GARNETT TYPEWRITER HAS GAINED SOME WEIGHT AT THE GYM THIS WEEK</span></p><p><span>January 19th, 2017 5:21pm</span></p><p><img src="media/155968295135.png"></p><p><span>IN PROGRESS GARAMONT TYPEFACE. kabk now please</span></p><p><span>January 16th, 2017 7:31pm</span></p><p><img src="media/155913203700.jpg"></p><p><span>compared to the original source material, this is soooo conservative</span></p><p><span>January 15th, 2017 4:38pm</span></p><p><img src="media/155904432245.png"></p><p><span>BUSINESS CARDS IN PROGRESS</span></p><p><span>January 15th, 2017 1:02pm</span></p><p><img src="media/155871350810.png"></p><p><span>you thought you had the coolest .notdef, sike, this right here is revolutionary</span></p><p><span>January 14th, 2017 6:53pm</span></p><p><img src="media/155590031510.png"></p><p><span>Deborah Outline Shadow. COMING NEVER to a desktop near you</span></p><p><span>January 8th, 2017 3:47pm</span></p><p><img src="media/155579951755.png"></p><p><span>an early sample of Garnett Typewriter ( formerly Blake)</span></p><p><span>January 8th, 2017 11:34am</span></p><p><img src="media/155577468800.jpg"></p><p><span>Quantum Sans in use!!!</span></p><p><span>January 8th, 2017 10:22am</span></p><p><img src="media/155542198745.png"></p><p><span>January 7th, 2017 4:08pm</span></p><p><img src="media/155356181345.png"></p><p><span>January 3rd, 2017 3:15pm</span></p><p><img src="media/155264069015.png"></p><p><span>Drawing some swash characters. changing things up:)</span></p><p><span>January 1st, 2017 4:52pm</span></p><p><span> December 27th, 2016 6:05pm</span></p><p><img src="media/154730790050.jpg"></p><p><span>December 20th, 2016 2:32pm</span></p><p><img src="media/154692342955.png"></p><p><span>December 19th, 2016 4:53pm</span></p><p><img src="media/154689295070.png"></p><p><span>December 19th, 2016 3:33pm</span></p><p><img src="media/154682657090.png"></p><p><span>Deberny &amp; Peignot “revival”</span></p><p><span>December 19th, 2016 12:23pm</span></p><p><img src="media/154491386730_0.jpg"></p><p><img src="media/154491386730_1.jpg"></p><p><img src="media/154491386730_2.jpg"></p><p><span>Specimen for Dai Foldes’ class</span></p><p><span>December 14th, 2016 10:38pm</span></p><p><img src="media/154451342465.png"></p><p><span>end pages in 2016</span></p><p><span>December 13th, 2016 11:49pm</span></p><p><img src="media/154392642305.jpg"></p><p><span>😬 sleep is for the weak</span></p><p><span>December 12th, 2016 5:06pm</span></p><p><img src="media/154335520465.png"></p><p><span>my current situation. I guess it’s going to be a late night in the studio</span></p><p><span>December 11th, 2016 11:44am</span></p><p><img src="media/154335036995.png"></p><p><span>typeset in Garnett Grotesk Medium</span></p><p><span>December 11th, 2016 11:30am</span></p><p><img src="media/154332488760.jpg"></p><p><span>Bold &amp; XBold. Still working on the naming convention</span></p><p><span>December 11th, 2016 10:12am</span></p><p><img src="media/154311651345.png"></p><p><span>SPECIMEN FOR DAI’S CLASS</span></p><p><span>December 10th, 2016 9:10pm</span></p><p><img src="media/154292895105_0.jpg"></p><p><img src="media/154292895105_1.jpg"></p><p><img src="media/154292895105_2.jpg"></p><p><img src="media/154292895105_3.jpg"></p><p><img src="media/154292895105_4.jpg"></p><p><img src="media/154292895105_5.jpg"></p><p><img src="media/154292895105_6.jpg"></p><p><span>Found an AMAZING book at the library on French renaissance printing types. I have fallen in love</span></p><p><span>December 10th, 2016 12:21pm</span></p><p><img src="media/154253365800.jpg"></p><p><span>garnett has 5 widths!!!! disclaimer: there will be contextual alternates for tighter typesetting e.g. /a with no tail &amp; /r with a perfectly vertical terminal</span></p><p><span>December 9th, 2016 1:16pm</span></p><p><span>width interpolation!</span></p><p><span>December 8th, 2016 8:22pm</span></p><p><img src="media/154077516775.gif"></p><p><span>December 5th, 2016 9:57am</span></p><p><img src="media/154034618820.gif"></p><p><span>NEW NAME ALERT! Blake ————&gt; Garnett</span></p><p><span>December 4th, 2016 11:25am</span></p><p><img src="media/154003345145.png"></p><p><span>Silly Tumblr, you&#39;re not Donald Knuth!!</span></p><p><span>December 3rd, 2016 5:10pm</span></p><p><span>the terminal of the /2 in Blake Grotesk changes from a negative angle as seen in the lighter weights of Akzidenz Grotesk and opens up to give space for the weight to be distributed as the face gains ALOT of weight</span></p><p><span>December 3rd, 2016 4:56pm</span></p><p><img src="media/153963827335.png"></p><p><span>the grotesque of the future and the past</span></p><p><span>December 2nd, 2016 6:03pm</span></p><p><img src="media/153963816430.png"></p><p><span>what did one pirate say to the other…idk</span></p><p><span>December 2nd, 2016 6:03pm</span></p><p><span>SVG interpolation via smartphone gyroscope;)</span></p><p><span>December 1st, 2016 6:07pm</span></p><p><img src="media/153865040955_0.jpg"></p><p><img src="media/153865040955_1.jpg"></p><p><span>November 30th, 2016 10:53am</span></p><p><img src="media/153748209450.png"></p><p><span>masters</span></p><p><span>November 27th, 2016 5:41pm</span></p><p><img src="media/153482521575.jpg"></p><p><span>my type]media application consists of type memes that I made</span></p><p><span>November 21st, 2016 2:10pm</span></p><p><img src="media/153446812225.jpg"></p><p><span>im ready for type]media</span></p><p><span>November 20th, 2016 6:00pm</span></p><p><img src="media/153290794460.jpg"></p><p><span>It’s windy in C4D</span></p><p><span>November 17th, 2016 12:39am</span></p><p><img src="media/153260218075.jpg"></p><p><span>November 16th, 2016 10:02am</span></p><p><img src="media/153260211875.jpg"></p><p><span>Moses hammer. DEBORAH, RAYMOND SANS &amp; QUANTUM SANS</span></p><p><span>November 16th, 2016 10:01am</span></p><p><em><span>Quantum Sans</span></em><span> is a typeface that has no predetermined shape, it was developed with several alternates for each letter that randomly swap out. Thanks to @typesupply for writing the </span><strong><span>wonderful</span></strong><span> OpenType Cookbook</span></p><p><span>November 14th, 2016 9:47pm</span></p><p><img src="media/153135334950_0.jpg"></p><p><img src="media/153135334950_1.jpg"></p><p><span>type cookers</span></p><p><span>November 13th, 2016 1:52pm typecooker</span></p><p><img src="media/152869988105.png"></p><p><span>HEY! Hyperallergic….fix this shit…i know joshua darden didnt forget the /gbreve……..</span></p><p><span>November 7th, 2016 4:28pm</span></p><p><img src="media/152783877330.jpg"></p><p><span>Regular, Antique (Slab), Ultra, Backslant, Typewriter</span></p><p><span>November 5th, 2016 6:14pm</span></p><p><img src="media/152755361800.png"></p><p><span>Imagine every style of type related to a sans…thats Blake</span></p><p><span>November 5th, 2016 12:43am</span></p><p><img src="media/152755296675.png"></p><p><span>Found in the </span><strong><span>MacKellar, Smiths &amp; Jordan Co</span></strong><span> specimen from 1892. So damn weird  </span></p><p><span>November 5th, 2016 12:41am</span></p><p><img src="media/152580817255.gif"></p><p><span>October 31st, 2016 10:37pm made with tumblr gif</span></p><p><img src="media/152579280055.png"></p><p><span>Static specimen for the least static typeface that I’ve designed</span></p><p><span>October 31st, 2016 9:53pm</span></p><p><span>Blake Grotesk, interpolation</span></p><p><span>October 26th, 2016 2:17pm</span></p><p><img src="media/152276714630.gif"></p><p><span>My attempt at variable fonts</span></p><p><span>October 24th, 2016 10:58pm made with tumblr gif</span></p><p><span>Elephant Toy Model</span></p><p><span>October 24th, 2016 7:56pm</span></p><p><img src="media/152071804715.png"></p><p><span>October 20th, 2016 11:23am</span></p><p><img src="media/151985638700.jpg"></p><p><span>I made art again after 2 years</span></p><p><span>October 18th, 2016 1:47pm</span></p><p><img src="media/151660353035.png"></p><p><span>ft. Blake Grotesk</span></p><p><span>October 11th, 2016 10:44am</span></p><p><img src="media/151479033305.png"></p><p><span>Blake Slab</span></p><p><span>Blake Grotesk</span></p><p><span>October 7th, 2016 2:18pm</span></p><p><img src="media/151479016560.png"></p><p><span>grotesks have become my life</span></p><p><span>October 7th, 2016 2:18pm</span></p><p><span>layer interpolation</span></p><p><span>October 5th, 2016 8:52pm</span></p><p><img src="media/151404381615.jpg"></p><p><span>October 5th, 2016 8:50pm</span></p><p><img src="media/151395990165.png"></p><p><em><span>when you have no clue what you’re doing but you need to get into KABK so you make some crazy shit</span></em></p><p><span>October 5th, 2016 5:00pm</span></p><p><img src="media/151394348780.png"></p><p><span>TEAR ßßßßßßßßß</span></p><p><span>October 5th, 2016 4:18pm</span></p><p><img src="media/151364231540.png"></p><p><span>oooooo this looks nice</span></p><p><span>October 4th, 2016 10:58pm</span></p><p><img src="media/151363819360.png"></p><p><span>One master of Fullerson, an extremely responsive typeface.</span></p><p><span>October 4th, 2016 10:47pm</span></p><p><img src="media/151354152715_0.png"></p><p><img src="media/151354152715_1.png"></p><p><span>SU O BJECTIVE BRAND PROPOSAL</span></p><p><span>October 4th, 2016 6:31pm</span></p><p><img src="media/151259999835.png"></p><p><span>October 2nd, 2016 6:46pm</span></p><p><img src="media/151202679375.jpg"></p><p><span>HADRIAN</span></p><p><span>October 1st, 2016 3:32pm</span></p><p><img src="media/151147447025.jpg"></p><p><span>I “re-drew” Minatour to have three optical sizes for this logo I made</span></p><p><span>September 30th, 2016 11:10am</span></p><p><span>i have to teach my class what interpolation is tomorrow so i made this little diagram to explain axes:) using input:)</span></p><p><span>September 27th, 2016 10:36pm</span></p><p><img src="media/151010220355.png"></p><p><span>NEW TYPEFACE ALMOST DONE:)</span></p><p><span>September 27th, 2016 10:50am</span></p><p><img src="media/150964761670.jpg"></p><p><span>Draw the extremes</span></p><p><span>September 26th, 2016 11:33am</span></p><p><img src="media/150940676920.png"></p><p><span>catich.notdef</span></p><p><span>September 25th, 2016 10:02pm</span></p><p><span>Responsive Letteringv 1.1</span></p><p><span>September 25th, 2016 9:54pm</span></p><p><img src="media/150938301455.png"></p><p><span>lil sis trying to mess up the design process</span></p><p><span>September 25th, 2016 9:06pm</span></p><p><img src="media/150819718835.png"></p><p><span>I designed this typeface just so I can bevel it in Photoshop</span></p><p><span>September 23rd, 2016 11:04am</span></p><p><img src="media/150818391165.png"></p><p><span>ctrl + opt + cmd + 8</span></p><p><span>September 23rd, 2016 10:22am</span></p><p><img src="media/150683328940.png"></p><p><span>facetime &amp; fonts (no i dont space captials to lowercase, it was the first glyph i clicked on)</span></p><p><span>September 20th, 2016 11:07am</span></p><p><img src="media/150605479745.jpg"></p><p><span>September 18th, 2016 6:18pm</span></p><p><img src="media/150589251555_0.jpg"></p><p><img src="media/150589251555_1.jpg"></p><p><img src="media/150589251555_2.jpg"></p><p><img src="media/150589251555_3.jpg"></p><p><span>Been doing ALOT of catich related work in the past few weeks</span></p><p><span>September 18th, 2016 12:00pm</span></p><p><img src="media/150454325465.jpg"></p><p><span>CATICH</span></p><p><span>1)Draw the word ‘hamburgefonstiv’ with broad nib</span></p><p><span>2)trace said letters onto tracing paper</span></p><p><span>3)scan and digitize the tracings</span></p><p><span>4)space the final letters</span></p><p><span>September 15th, 2016 2:19pm</span></p><p><img src="media/150228955975.png"></p><p><span>MM. here we go</span></p><p><span>September 10th, 2016 5:06pm</span></p><p><img src="media/150226325965.gif"></p><p><span>close up of folded painters tape, holding up Venus Breit Fett type specimen 1915</span></p><p><span>September 10th, 2016 4:03pm</span></p><p><img src="media/150225803390.jpg"></p><p><span>Semantic Still Life; Advanced Design 1</span></p><p><span>September 10th, 2016 3:51pm</span></p><p><img src="media/150137793205_0.gif"></p><p><img src="media/150137793205_1.gif"></p><p><img src="media/150137793205_2.gif"></p><p><span>September 8th, 2016 5:53pm made with tumblr gif</span></p><p><img src="media/150137780295.gif"></p><p><span>Dai said to trace, I said no</span></p><p><span>September 8th, 2016 5:53pm</span></p><p><img src="media/150053312150.png"></p><p><span>Semantic Still Life in progress</span></p><p><span>September 6th, 2016 8:49pm</span></p><p><img src="media/149900666575.jpg"></p><p><span>Cinema4D Rendering. First time using the program, now I have a headache</span></p><p><span>September 3rd, 2016 5:49pm</span></p><p><img src="media/149710771920_0.jpg"></p><p><img src="media/149710771920_1.jpg"></p><p><span>Which one???? </span><a href='https://tmblr.co/mIFbuvBeejwCtRTECqaiEYA'><span>@temporaryreminders</span></a></p><p><span>August 30th, 2016 3:22pm</span></p><p><img src="media/149710684445.jpg"></p><p><span>August 30th, 2016 3:20pm</span></p><p><img src="media/149682069370_0.jpg"></p><p><img src="media/149682069370_1.jpg"></p><p><span>Installed vinyl. Arnhem XXL</span></p><p><span>August 29th, 2016 11:18pm</span></p><p><img src="media/149681961735.jpg"></p><p><span>“Hey guys we need a monospace but all we have is times..”</span></p><p><span>August 29th, 2016 11:15pm</span></p><p><img src="media/149681855480.jpg"></p><p><span>New logo I drew for Megan Macphee</span></p><p><span>August 29th, 2016 11:13pm</span></p><p><img src="media/148987985875.jpg"></p><p><span>August 15th, 2016 1:10pm</span></p><p><img src="media/148947695720.jpg"></p><p><span>August 14th, 2016 5:09pm</span></p><p><img src="media/148947685315.jpg"></p><p><span>August 14th, 2016 5:09pm</span></p><p><img src="media/148947660035_0.jpg"></p><p><img src="media/148947660035_1.jpg"></p><p><img src="media/148947660035_2.jpg"></p><p><span>Deborah Regular, Italic and Bold. Coming soon from Lost Type</span></p><p><span>August 14th, 2016 5:09pm</span></p><p><img src="media/145718879915.jpg"></p><p><span>playing around with Cyrillic</span></p><p><span>June 10th, 2016 3:18pm</span></p><p><img src="media/145718851860.png"></p><p><span>MICRO NEWS  </span></p><p><span>June 10th, 2016 3:17pm</span></p><p><img src="media/144310437900.jpg"></p><p><span>May 13th, 2016 4:00pm</span></p><p><img src="media/143599071105.jpg"></p><p><a href='http://cargocollective.com/baileysheehan' target='_blank' class='url'>http://cargocollective.com/baileysheehan</a><span>  </span></p><p><span>April 29th, 2016 5:22pm</span></p><p><img src="media/143500314940.png"></p><p><span>haiku haiku haiku haiku haiku haiku haiku haiku haiku haiku</span></p><p><span>April 27th, 2016 6:03pm</span></p><p><img src="media/143179729030.png"></p><p><span>April 21st, 2016 4:21pm</span></p><p><img src="media/143178711220.jpg"></p><p><span>rosartttttt</span></p><p><span>April 21st, 2016 4:00pm</span></p><p><span>3D scanning with iPhone 6</span></p><p><span>April 20th, 2016 5:48pm</span></p><p><img src="media/142800403450.png"></p><p><span>deborah sans</span></p><p><span>April 14th, 2016 1:30pm</span></p><p><img src="media/142538729180.png"></p><p><span>X-condensed –&gt; condensed –&gt; regular –&gt; extended</span></p><p><span>April 9th, 2016 7:12pm</span></p><p><img src="media/142044340365_0.jpg"></p><p><img src="media/142044340365_1.jpg"></p><p><span>Why not start my thesis 7 months early</span></p><p><span>March 31st, 2016 9:47pm</span></p><p><img src="media/142036242420.png"></p><p><span>SOTA SPECIMEN</span></p><p><span>March 31st, 2016 6:52pm</span></p><p><img src="media/141632236110.png"></p><p><span>Bold (v2) 3/24/2016 8:40PM</span></p><p><span>March 24th, 2016 8:40pm</span></p><p><img src="media/141629748185.jpg"></p><p><span>Blake Gothic (WIP)</span></p><p><span>March 24th, 2016 7:45pm</span></p><p><img src="media/141524307355.png"></p><p><span>i saw this overlay of letters the other day, i liked it. Bold vs Regular</span></p><p><span>March 22nd, 2016 11:01pm</span></p><p><img src="media/141524244370.png"></p><p><span>3/21/2016 Started to design the bold, last weight!!!!!!!! i can see the light</span></p><p><span>March 22nd, 2016 11:00pm</span></p><p><img src="media/141107575555.png"></p><p><span>Germandbls</span></p><p><span>March 15th, 2016 5:10pm</span></p><p><img src="media/141045533455.jpg"></p><p><span>Deborah’s x-height is 69% of the cap height. This increases the legibility at small sizes. Deborah was designed for the intent to be used at 6-10 pts in books.</span></p><p><span>March 14th, 2016 3:49pm</span></p><p><img src="media/141037127740.png"></p><p><span>Swash Capital in a text face?!?!</span></p><p><span>March 14th, 2016 12:44pm</span></p><p><img src="media/140407404395.jpg"></p><p><span>I proof my proofs that I proofed</span></p><p><span>March 3rd, 2016 4:23pm</span></p><p><img src="media/140405193470.jpg"></p><p><span>sketch for new typeface, a modern take on early 19th-20th century grotesques</span></p><p><span>March 3rd, 2016 3:39pm</span></p><p><img src="media/139681891710.jpg"></p><p><span>February 20th, 2016 4:42pm</span></p><p><span>Haultin Optics </span><em><span>facial recognition test</span></em><span> (its just after effects)</span></p><p><span>February 18th, 2016 9:12pm</span></p><p><img src="media/139561669050.jpg"></p><p><span>Specimen for my upcoming typeface!</span></p><p><span>February 18th, 2016 4:24pm</span></p><p><img src="media/139561648525_0.jpg"></p><p><img src="media/139561648525_1.jpg"></p><p><span>So happy that I bought this book 2 weeks before it when out of print:)</span></p><p><span>February 18th, 2016 4:24pm</span></p><p><img src="media/139329767050_0.png"></p><p><img src="media/139329767050_1.png"></p><p><span>2/15/2016</span></p><p><span>Italics includes an alternate ‘g’</span></p><p><span>February 14th, 2016 9:06pm</span></p><p><span>Agate H based off of Gemili Micro by Production Type…in progess branding!!</span></p><p><span>February 4th, 2016 11:39am</span></p><p><img src="media/138228864855.png"></p><p><span>planning out a bold weight:)</span></p><p><span>January 28th, 2016 2:11pm</span></p><p><img src="media/137913430525.png"></p><p><span>ground control</span></p><p><span>January 23rd, 2016 7:38pm</span></p><p><img src="media/137913406680.png"></p><p><span>spacing center lol</span></p><p><span>January 23rd, 2016 7:37pm</span></p><p><img src="media/137503624120_0.jpg"></p><p><img src="media/137503624120_1.jpg"></p><p><img src="media/137503624120_2.jpg"></p><p><img src="media/137503624120_3.jpg"></p><p><img src="media/137503624120_4.jpg"></p><p><img src="media/137503624120_5.jpg"></p><p><img src="media/137503624120_6.jpg"></p><p><img src="media/137503624120_7.jpg"></p><p><img src="media/137503624120_8.jpg"></p><p><img src="media/137503624120_9.jpg"></p><p><span>These images are scans from my sketchbook, exhibiting the progress of Deborah as well as reaction drawings to the books, Counterpunch and The Stroke  </span></p><p><span>January 17th, 2016 4:18pm</span></p><p><img src="media/136726017975.jpg"></p><p><span>Large body of text proof</span></p><p><span>January 5th, 2016 11:56pm</span></p><p><img src="media/136725769160.png"></p><p><span>Italics in the works</span></p><p><span>January 5th, 2016 11:51pm</span></p><p><img src="media/136337581430.png"></p><p><span>December 31st, 2015 1:14pm</span></p><p><img src="media/136281222215.png"></p><p><span>Deborah Italic in the works</span></p><p><span>December 30th, 2015 4:58pm</span></p><p><img src="media/136141928140.png"></p><p><span>Section Symbol, Deborah, WIP 12/28/2015</span></p><p><span>December 28th, 2015 6:15pm</span></p><p><img src="media/135863805185.png"></p><p><span>i have a question for you, Deborah Regular</span></p><p><span>December 24th, 2015 3:09pm</span></p><p><span>New ‘a’, top of bowl had been given a slight angle and the terminal has been raised</span></p><p><span>December 19th, 2015 2:40pm</span></p><p><img src="media/135521147745.png"></p><p><span>spacing fun</span></p><p><span>December 19th, 2015 2:36pm</span></p><p><img src="media/135450119660.png"></p><p><span>October 2015-December 2015</span></p><p><span>December 18th, 2015 11:55am</span></p><p><img src="media/135448305100.png"></p><p><span>Deborah includes an alternative ‘Q’ so there is no overlapping of descenders and the tail of the ‘Q’</span></p><p><span>December 18th, 2015 11:15am</span></p><p><img src="media/135446147365.jpg"></p><p><span>Deborah Proof 12/18/2015 (tal leming)</span></p><p><span>December 18th, 2015 10:25am</span></p><p><span>“g” of Deborah, Work In Progress, Connor Davenport  </span></p><p><span>December 15th, 2015 11:17pm</span></p><p><img src="media/135190123730.jpg"></p><p><span>Trinité, Bram de Does, 1982</span></p><p><span>December 14th, 2015 11:08am</span></p><h1 id='font-vs-typeface'><span>font vs typeface</span></h1><p><span>“In the days of hand-set metal type, a ‘font’ in English was a set of characters of any one size and style: say, 8 point Baskerville italic. In this example the ‘typeface’ was Baskerville. Such a font was given a separate price and each could be bought separately: so one could buy the 8 point italic without the 8 point roman. With the coming of typesetting that generated multiple styles and sizes from a single set of master characters, this distinction broke down: ‘typefaces’ became ‘fonts’.” -Unknown Source</span></p><p><span>December 14th, 2015 10:57am</span></p></div></div>
+</body>
+</html>
